@@ -51,7 +51,7 @@ export default function DateProgress() {
 
         const data = await response.json();
         const year = new Date().getFullYear().toString();
-        const holidays = data[year];
+        const holidays: Record<string, HolidayData> = data[year];
 
         if (!holidays || Object.keys(holidays).length === 0) {
           setNextHoliday(null);
@@ -63,7 +63,7 @@ export default function DateProgress() {
 
         let closestHoliday: Holiday | null = null;
 
-        Object.entries(holidays).forEach(([dateString, holidayData]: [string, HolidayData]) => {
+        Object.entries(holidays).forEach(([dateString, holidayData]) => {
           const holidayDate = new Date(dateString);
           holidayDate.setHours(0, 0, 0, 0);
 
