@@ -1,4 +1,4 @@
-import Clock from "@/components/main/Clock";
+import Left from "@/components/main/Left";
 import Personal from "@/components/main/Personal";
 import Footer from "@/components/main/Footer";
 
@@ -8,7 +8,7 @@ export default function Main() {
       <div className="flex flex-col gap-4 items-center justify-center">
         <div className="flex flex-row gap-4 items-center justify-center">
           <Personal/>
-          <Clock/>
+          <Left/>
         </div>
         <Footer/>
       </div>
