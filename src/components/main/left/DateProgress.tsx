@@ -7,6 +7,12 @@ interface Holiday {
   daysUntil: number;
 }
 
+interface HolidayData {
+  date: string;
+  name: string;
+  isOffDay: boolean;
+}
+
 // 计算今年进度
 function getYearProgress() {
   const today = Date.now();
@@ -15,12 +21,12 @@ function getYearProgress() {
 }
 
 // 打印进度条
-function Progress(props: {value: number}) {
+function Progress(props: { value: number }) {
   return (
     <div className="h-2 w-36 bg-green-700 rounded-full">
       <div
         className="h-full bg-green-400 transition-all duration-300"
-        style={{ width: `${props.value * 100}%` }}
+        style={ { width: `${ props.value * 100 }%` } }
       ></div>
     </div>
   );
@@ -33,7 +39,7 @@ export default function DateProgress() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNextHoliday = async () => {
+    const fetchNextHoliday = async() => {
       try {
         setLoading(true);
         setError(null);
@@ -57,7 +63,7 @@ export default function DateProgress() {
 
         let closestHoliday: Holiday | null = null;
 
-        Object.entries(holidays).forEach(([dateString, holidayData]: [string, any]) => {
+        Object.entries(holidays).forEach(([dateString, holidayData]: [string, HolidayData]) => {
           const holidayDate = new Date(dateString);
           holidayDate.setHours(0, 0, 0, 0);
 
@@ -95,17 +101,17 @@ export default function DateProgress() {
   if (error) return (
     <div className="w-36 h-36 flex flex-col items-center justify-center text-center text-red-500 text-md">
       <div>错误!</div>
-      <div>{error}</div>
+      <div>{ error }</div>
     </div>
   );
 
   return (
     <div className="w-36 h-36 flex flex-col items-center justify-center text-center text-white text-md">
       <div>下一个节日是:</div>
-      <div>{nextHoliday?.name}</div>
-      <div>还有{nextHoliday?.daysUntil}天</div>
-      <div>{new Date().getFullYear()}已过去{`${(getYearProgress() * 100).toFixed(2)}%`}</div>
-      <Progress value={getYearProgress()} />
+      <div>{ nextHoliday?.name }</div>
+      <div>还有{ nextHoliday?.daysUntil }天</div>
+      <div>{ new Date().getFullYear() }已过去{ `${ (getYearProgress() * 100).toFixed(2) }%` }</div>
+      <Progress value={ getYearProgress() }/>
     </div>
   );
 }
