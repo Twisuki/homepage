@@ -61,7 +61,7 @@ export default function Footer() {
     {
       title: "App",
       description: "湖南大学机器人学院学生手册",
-      url: "",
+      url: "https://app.twis.uk",
       icon: (<>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
           <path
