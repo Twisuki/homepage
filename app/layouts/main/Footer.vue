@@ -10,6 +10,7 @@
 .footer {
   width: 100%;
   height: 4rem;
-  background-color: #ff00aa;
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
 }
 </style>

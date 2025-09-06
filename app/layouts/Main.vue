@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import Personal from "~/layouts/main/Personal.vue";
 import Time from "~/layouts/main/Time.vue";
 import Footer from "~/layouts/main/Footer.vue";

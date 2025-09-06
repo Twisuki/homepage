@@ -10,8 +10,9 @@
 
 <style scoped>
 .time {
-  width: 8rem;
-  height: 8rem;
-  background-color: #aaff00;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
 }
 </style>

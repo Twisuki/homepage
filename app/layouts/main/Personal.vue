@@ -15,16 +15,15 @@
 
 <style scoped>
 .personal {
-  height: 8rem;
+  height: 10rem;
   background-color: var(--bg-card);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   display: flex;
-  gap: 1rem;
 }
 
 .avatar {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;

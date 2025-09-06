@@ -3,11 +3,15 @@
 :root {
 	--color-text: #ffffff99;
 	--bg-card: #ffffff22;
+	--bg-cover: #00000066;
 
-	/* z-layer */
+	/* 层高 */
 	--z-bg: 50;
 	--z-main: 100;
 	--z-menu: 200;
+
+	/* 通用 */
+	--radius: 1rem;
 }
 
 .light-mode {
