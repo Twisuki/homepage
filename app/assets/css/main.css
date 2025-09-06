@@ -3,6 +3,7 @@
 :root {
 	--color-text: #ffffff99;
 	--bg-card: #ffffff22;
+	--bg-card-hover: #ffffff44;
 	--bg-cover: #00000066;
 
 	/* 层高 */
