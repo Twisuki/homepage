@@ -14,40 +14,51 @@ interface Feature {
 
 const featureList: Feature[] = [
   {
-    title: "Projects",
+    title: "我的项目",
     icon: "fa-solid fa-code-branch",
     items: [
       {
-        title: "Homepage",
-        link: "https://github.com/Twisuki/homepage",
+        title: "个人主页",
+        link: "https://twis.uk",
         icon: "fa-solid fa-house"
       },
       {
-        title: "Blog",
-        link: "https://github.com/Twisuki/blog",
+        title: "苏喵博客",
+        link: "https://blog.twis.uk",
         icon: "fa-solid fa-blog"
       },
       {
-        title: "Blog",
-        link: "https://github.com/Twisuki/blog",
-        icon: "fa-solid fa-blog"
+        title: "学生手册",
+        link: "https://app.twis.uk",
+        icon: "fa-solid fa-book"
       },
       {
-        title: "Blog",
-        link: "https://github.com/Twisuki/blog",
-        icon: "fa-solid fa-blog"
-      },
-      {
-        title: "Blog",
-        link: "https://github.com/Twisuki/blog",
-        icon: "fa-solid fa-blog"
+        title: "弦月档案",
+        link: "https://hxy.twis.uk",
+        icon: "fa-solid fa-box-archive"
       },
     ],
   },
   {
-    title: "Contact",
+    title: "联系方式",
     icon: "fa-regular fa-paper-plane",
-    link: "https://github.com/Twisuki"
+    items: [
+      {
+        title: "邮箱",
+        link: "mailto://suyang233@hotmail.com",
+        icon: "fa-solid fa-envelope"
+      },
+      {
+        title: "B站",
+        link: "https://space.bilibili.com/317707977",
+        icon: "fa-brands fa-bilibili"
+      },
+      {
+        title: "Twitter",
+        link: "https://x.com/suyang_233",
+        icon: "fa-brands fa-x-twitter"
+      }
+    ],
   },
   {
     title: "Github",

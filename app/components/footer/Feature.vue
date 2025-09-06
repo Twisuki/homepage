@@ -57,6 +57,7 @@ const handleMouseLeave = () => {
           v-for="(item, index) in items"
           :key="index"
           :style="{ animationDelay: `${index * 0.1}s` }"
+          @click="openLink(item.link)"
       >
         <span class="dropdown__icon">
           <i :class=item.icon></i>
