@@ -21,10 +21,10 @@ import Footer from "~/layouts/main/Footer.vue";
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #00aaff;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  z-index: var(--z-main);
 }
 
 .header {

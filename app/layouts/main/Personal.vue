@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
@@ -17,7 +16,8 @@
 <style scoped>
 .personal {
   height: 8rem;
-  background-color: #ffaa00;
+  background-color: var(--bg-card);
+  border-radius: 1rem;
   display: flex;
   gap: 1rem;
 }

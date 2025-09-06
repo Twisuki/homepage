@@ -9,9 +9,3 @@ import Background from "~/components/base/Background.vue";
     <Main/>
   </NuxtLayout>
 </template>
-
-<style scoped>
-.page {
-  z-index: 100;
-}
-</style>
