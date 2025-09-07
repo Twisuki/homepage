@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
-import Holiday from "~/components/time/Holiday.vue";
+import Holiday from "~/components/time/Holiday.vue"
 </script>
 
 <template>
   <div class="time">
-    <span class="holiday"><Holiday/></span>
+    <span class="holiday"><Holiday /></span>
   </div>
 </template>
 

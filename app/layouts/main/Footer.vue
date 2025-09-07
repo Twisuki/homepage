@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import Feature from "~/components/footer/Feature.vue";
+import Feature from "~/components/footer/Feature.vue"
 
 interface Feature {
-  title: string;
-  icon?: string;
-  link?: string;
+  title: string
+  icon?: string
+  link?: string
   items?: Array<{
-    title: string;
-    link: string;
-    icon?: string;
-  }>;
+    title: string
+    link: string
+    icon?: string
+  }>
 }
 
 const featureList: Feature[] = [
@@ -20,22 +20,22 @@ const featureList: Feature[] = [
       {
         title: "个人主页",
         link: "https://twis.uk",
-        icon: "fa-solid fa-house"
+        icon: "fa-solid fa-house",
       },
       {
         title: "苏喵博客",
         link: "https://blog.twis.uk",
-        icon: "fa-solid fa-blog"
+        icon: "fa-solid fa-blog",
       },
       {
         title: "学生手册",
         link: "https://app.twis.uk",
-        icon: "fa-solid fa-book"
+        icon: "fa-solid fa-book",
       },
       {
         title: "弦月档案",
         link: "https://hxy.twis.uk",
-        icon: "fa-solid fa-box-archive"
+        icon: "fa-solid fa-box-archive",
       },
     ],
   },
@@ -46,31 +46,36 @@ const featureList: Feature[] = [
       {
         title: "邮箱",
         link: "mailto://suyang233@hotmail.com",
-        icon: "fa-solid fa-envelope"
+        icon: "fa-solid fa-envelope",
       },
       {
         title: "B站",
         link: "https://space.bilibili.com/317707977",
-        icon: "fa-brands fa-bilibili"
+        icon: "fa-brands fa-bilibili",
       },
       {
         title: "Twitter",
         link: "https://x.com/suyang_233",
-        icon: "fa-brands fa-x-twitter"
-      }
+        icon: "fa-brands fa-x-twitter",
+      },
     ],
   },
   {
     title: "Github",
     icon: "fa-brands fa-github",
-    link: "https://github.com/Twisuki"
+    link: "https://github.com/Twisuki",
   },
-];
+]
 </script>
 
 <template>
   <div class="footer">
-    <Feature v-for="feature in featureList" v-bind="feature" class="feature"/>
+    <Feature
+      v-for="(feature, index) in featureList"
+      v-bind="feature"
+      :key="index"
+      class="feature"
+    />
   </div>
 </template>
 

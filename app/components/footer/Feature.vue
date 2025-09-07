@@ -1,66 +1,66 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue"
 
 interface Feature {
-  title: string;
-  icon?: string;
-  link?: string;
+  title: string
+  icon?: string
+  link?: string
   items?: Array<{
-    title: string;
-    link: string;
-    icon?: string;
-  }>;
+    title: string
+    link: string
+    icon?: string
+  }>
 }
 
-const props = defineProps<Feature>();
-const showDropdown = ref(false);
-let hideTimeout:number | null = null;
+defineProps<Feature>()
+const showDropdown = ref(false)
+let hideTimeout: number | null = null
 
 const openLink = (link?: string) => {
-  if (link) window.open(link);
+  if (link) window.open(link)
 }
 
 const handleMouseEnter = () => {
   if (hideTimeout) {
-    clearTimeout(hideTimeout);
-    hideTimeout = null;
+    clearTimeout(hideTimeout)
+    hideTimeout = null
   }
-  showDropdown.value = true;
+  showDropdown.value = true
 }
 
 const handleMouseLeave = () => {
   hideTimeout = window.setTimeout(() => {
-    showDropdown.value = false;
-  }, 300);
+    showDropdown.value = false
+  }, 300)
 }
 </script>
 
 <template>
   <div
-      class="feature"
-      @click="openLink(link)"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
+    class="feature"
+    @click="openLink(link)"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <span class="feature__icon">
-      <i :class=icon></i>
+      <i :class="icon" />
     </span>
     <span class="feature__title">{{ title }}</span>
     <div
-        class="dropdown__container"
-        v-if="items && showDropdown"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
+      v-if="items && showDropdown"
+      class="dropdown__container"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
     >
       <div
-          class="dropdown"
-          v-for="(item, index) in items"
-          :key="index"
-          :style="{ animationDelay: `${index * 0.1}s` }"
-          @click="openLink(item.link)"
+        v-for="(item, index) in items"
+        :key="index"
+        class="dropdown"
+        :style="{ animationDelay: `${index * 0.1}s` }"
+        @click="openLink(item.link)"
       >
         <span class="dropdown__icon">
-          <i :class=item.icon></i>
+          <i :class="item.icon" />
         </span>
         <span class="dropdown__title">{{ item.title }}</span>
       </div>

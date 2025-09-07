@@ -7,16 +7,20 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@nuxt/eslint": "1.9.0",
+    "@nuxt/eslint-config": "1.9.0",
     "@nuxtjs/color-mode": "3.5.2",
+    "eslint": "^9.35.0",
     "nuxt": "^4.1.0",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "modern-css-reset": "^1.4.0",
-    "sass": "^1.92.1"
+    "typescript": "^5.9.2"
   }
 }

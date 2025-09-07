@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <div class="background">
-
-  </div>
+  <div class="background" />
 </template>
 
 <style scoped>

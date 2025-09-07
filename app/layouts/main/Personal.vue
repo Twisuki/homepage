@@ -4,11 +4,18 @@
 <template>
   <div class="personal">
     <div class="avatar">
-      <img src="/avatar.png" alt="Twisuki"/>
+      <img
+        src="/avatar.png"
+        alt="Twisuki"
+      >
     </div>
     <div class="content">
-      <div class="content__1">大家好这里是</div>
-      <div class="content__2">Twisuki ~</div>
+      <div class="content__1">
+        大家好这里是
+      </div>
+      <div class="content__2">
+        Twisuki ~
+      </div>
     </div>
   </div>
 </template>
