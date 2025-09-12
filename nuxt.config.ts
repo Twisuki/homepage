@@ -17,10 +17,9 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2025-07-15",
   nitro: {
-    devProxy: {
-      "/api/holiday": {
-        target: "https://api.jiejiariapi.com",
-        changeOrigin: true,
+    routeRules: {
+      "/api/holiday/**": {
+        proxy: "https://api.jiejiariapi.com/v1/holidays/**",
       },
     },
   },

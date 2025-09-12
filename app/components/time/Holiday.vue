@@ -13,7 +13,7 @@ interface HolidayData {
 }
 
 const msg = ref<string>("加载中")
-const HOLIDAY_API = "/api/holiday/v1/holidays/"
+const HOLIDAY_API = "api/holiday/"
 
 // 获取下一个节假日信息
 const getNextHoliday = (data: { [key: string]: HolidayApiData }): HolidayData | null => {
