@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    storage: "localStorage",
+  },
   compatibilityDate: "2026-01-16",
   i18n: {
     defaultLocale: "zh",

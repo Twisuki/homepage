@@ -30,12 +30,6 @@ const handleClick = () => {
 }
 
 const handleMenuToggle = () => {
-  if (isActived.value) {
-    // ...
-  }
-  else {
-    // 打开
-  }
   isActived.value = !isActived.value
 }
 </script>
@@ -88,6 +82,8 @@ const handleMenuToggle = () => {
 
   :active {
     background-color: var(--bg-button-active);
+    transform: scale(0.9);
+    transition: transform var(--duration) ease;
   }
 }
 

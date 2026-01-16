@@ -33,6 +33,8 @@
   background-blend-mode: multiply;
   filter: blur(2px);
   pointer-events: none;
+
+  transition: background-color var(--duration) ease;
 }
 
 .main {

@@ -7,7 +7,27 @@
   --bg-button-hover: #ffffff66;
   --bg-button-active: #ffffff44;
 
-  --text-color: #ffffff99;
+  --text-color: #ffffff;
 
   --duration: 0.2s;
+}
+
+.light-mode {
+  --bg: rgba(0, 0, 0, 0.4);
+  --bg-card: #ffffff22;
+  --bg-button: #ffffff22;
+  --bg-button-hover: #ffffff66;
+  --bg-button-active: #ffffff44;
+
+  --text-color: #eeeeee;
+}
+
+.dark-mode  {
+  --bg: rgba(0, 0, 0, 0.5);
+  --bg-card: #ffffff11;
+  --bg-button: #ffffff11;
+  --bg-button-hover: #ffffff44;
+  --bg-button-active: #ffffff33;
+
+  --text-color: #ffffff;
 }
