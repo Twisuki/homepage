@@ -59,6 +59,13 @@ const handleMenuToggle = () => {
         :class="{ expand: isActived }"
       />
     </template>
+    <div
+      class="content"
+      :style="{ '--width': `${props.label.length}rem` }"
+      :class="{ disabled: isActived }"
+    >
+      {{ label }}
+    </div>
   </div>
 </template>
 
@@ -100,10 +107,37 @@ const handleMenuToggle = () => {
   font-size: 1.25rem;
   transform: translate(-50%, -50%) scale(0);
   transition: transform var(--duration) ease var(--delay);
+
+  & .content {
+    left: -0.5rem;
+    top: 100%;
+  }
+
+  &.expand {
+    --radius: 4rem;
+    transform: translate(
+      calc(-50% - var(--radius) * cos(var(--angle))),
+      calc(-50% + var(--radius) * sin(var(--angle)))
+    );
+  }
 }
 
-.item.expand {
-  --radius: 4rem;
-  transform: translate(calc(-50% - var(--radius) * cos(var(--angle))), calc(-50% + var(--radius) * sin(var(--angle))));
+.content {
+  position: absolute;
+  top: 50%;
+  left: -1rem;
+  width: 0;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1rem;
+  transform: translate(-100%, -50%);
+  pointer-events: none;
+  transition: width var(--duration) ease;
+}
+
+.container:hover > .content:not(.disabled) {
+  --width: 0rem;
+  width: var(--width);
 }
 </style>
