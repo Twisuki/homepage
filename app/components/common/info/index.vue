@@ -7,13 +7,14 @@
     rounded
     class="container"
   >
-    Full-Stack Enthusiast | Frontend Engineer
+    <CommonInfoLocation />
+    <CommonInfoProgress />
+    <CommonInfoDate />
   </BaseCard>
 </template>
 
 <style scoped>
 .container {
-  width: 100%;
-  height: 4rem;
+  width: 15rem;
 }
 </style>

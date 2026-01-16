@@ -4,14 +4,10 @@
 
 <template>
   <div class="container">
-    Navbar
+    长沙
   </div>
 </template>
 
 <style scoped>
-.container {
-  width: 100%;
-  height: 4rem;
-  background-color: var(--bg-card);
-}
+
 </style>

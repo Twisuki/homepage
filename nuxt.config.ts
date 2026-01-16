@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxt/eslint-config",
     "@nuxtjs/i18n",
+    "@nuxt/icon",
   ],
   ssr: true,
   devtools: { enabled: true },
