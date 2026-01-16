@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const title = "苏阳的个人主页"
+const title = "苏阳 ♡ | 主页"
 const description = "一只喜欢到处贴贴的小猫娘~ / 前端工程师 / 全栈爱好者"
 
 useSeoMeta({

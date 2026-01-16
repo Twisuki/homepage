@@ -1,63 +1,113 @@
 <script setup lang="ts">
-interface Button {
-  key: string
+interface Props {
   label: string
   icon: string
   type: "a" | "menu" | "default"
-}
-
-interface AButtonProps extends Button {
-  type: "a"
-  to: string
-}
-
-interface MenuButtonProps extends Button {
-  type: "menu"
-  items: Button[]
-}
-
-interface DefaultButtonProps extends Button {
-  type: "default"
+  to?: string
+  items?: Props[]
   callback?: () => void
 }
 
-type Props = AButtonProps | MenuButtonProps | DefaultButtonProps
-
 const props = defineProps<Props>()
 
+const itemsCount = props.items ? props.items.length : 0
+const isActived = ref(false)
+
 const handleClick = () => {
-  if (props.type === "a") {
-    window.open(props.to, "_blank")
+  switch (props.type) {
+    case "a":
+      window.open(props.to, "_blank")
+      break
+    case "default":
+      if (props.callback) props.callback()
+      break
+    case "menu":
+      handleMenuToggle()
+      break
+    default:
+      console.error(props.to)
   }
-  else if (props.type === "menu") {
-    // Emit an event to open the menu
-    // This is a placeholder, actual implementation may vary
-    console.log("Open menu with items:", props.items)
+}
+
+const handleMenuToggle = () => {
+  if (isActived.value) {
+    // ...
   }
   else {
-    console.log("Open menu with items:", props)
+    // 打开
   }
+  isActived.value = !isActived.value
 }
 </script>
 
 <template>
   <div
     class="container"
+    :class="{ active: isActived }"
     @click="handleClick"
   >
     <Icon :name="icon" />
+    <template v-if="props.type === 'menu'">
+      <BaseMenuButton
+        v-for="(item, index) in items"
+        :key="index"
+        :label="item.label"
+        :icon="item.icon"
+        :type="item.to ? 'a' : item.type"
+        :to="item.to"
+        :items="item.items"
+        :callback="item.callback"
+        class="item"
+        :style="{
+          '--angle': `${(90 / (itemsCount - 1)) * index}deg`,
+          '--delay': `${isActived ? index * 0.05 : (itemsCount - index) * 0.05}s`,
+        }"
+        :class="{ expand: isActived }"
+      />
+    </template>
   </div>
 </template>
 
 <style scoped>
 .container {
+  position: relative;
   width: 3rem;
   height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--bg-card);
+  background-color: var(--bg-button);
   font-size: 1.5rem;
+  transition: background-color var(--duration) ease;
+
+  .active,
+  :hover {
+    background-color: var(--bg-button-hover);
+  }
+
+  :active {
+    background-color: var(--bg-button-active);
+  }
+}
+
+.item {
+  --angle: 0deg;
+  --radius: 0rem;
+  --delay: 0s;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--duration) ease var(--delay);
+}
+
+.item.expand {
+  --radius: 4rem;
+  transform: translate(calc(-50% - var(--radius) * cos(var(--angle))), calc(-50% + var(--radius) * sin(var(--angle))));
 }
 </style>

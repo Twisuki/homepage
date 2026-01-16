@@ -21,5 +21,6 @@
   align-items: start;
   padding: calc(10vh) 2rem 2rem;
   gap: 2rem;
+  color: var(--text-color);
 }
 </style>

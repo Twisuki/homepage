@@ -25,7 +25,7 @@
   left: -2px;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: var(--bg);
   background-image: url("/shizuku.png");
   background-size: cover;
   background-position: center;
