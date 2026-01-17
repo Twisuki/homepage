@@ -29,28 +29,18 @@ export interface SemesterData {
 /**
  * 当前学期接口
  *
- * @property{string} name - 学期名称
- * @property{Date} startDate - 学期开始日期
+ * @property{string} year - 学期年份
+ *   @example "2025-2026"
  * @property{"autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"} type - 学期类型
  * @property{number} weeks - 总周数
  * @property{number} currentWeek - 当前周数
  */
 export interface Semester {
-  name: string
-  startDate: string
+  year: string
   type: "autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"
   weeks: number
   currentWeek: number
 }
-
-const SemesterTypeMap = new Map([
-  ["autumn", "秋季学期"],
-  ["winter", "寒假"],
-  ["spring", "春季学期"],
-  ["summer1", "夏季学期"],
-  ["holiday", "暑假"],
-  ["summer2", "夏季学期"],
-])
 
 export const getSemester = (): Semester | null => {
   const today = dayjs()
@@ -63,11 +53,9 @@ export const getSemester = (): Semester | null => {
       const currentWeek = Math.ceil(daysSinceStart / 7) || 1
 
       const year = startDate.year()
-      const type = SemesterTypeMap.get(semeter.type)
 
       return {
-        name: `${year}-${year + 1}年${type}`,
-        startDate: startDate.format("YYYY-MM-DD"),
+        year: `${year}-${year + 1}`,
         type: semeter.type,
         weeks: semeter.weeks,
         currentWeek: currentWeek,

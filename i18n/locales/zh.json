@@ -30,14 +30,20 @@
       "school": "湖南大学"
     },
     "progress": {
-      "failed": "信息获取失败"
+      "failed": "信息获取失败",
+      "autumn": "秋季学期",
+      "winter": "寒假",
+      "spring": "春季学期",
+      "summer1": "夏季学期",
+      "holiday": "暑假",
+      "summer2": "夏季学期"
     },
     "date": {
       "pending": "获取中...",
       "failed": "获取失败",
       "prefix": "距离",
-      "infix": "还有",
-      "suffix": "天",
+      "infix": "还有 ",
+      "suffix": " 天",
       "null": "今年的假日过完了T_T"
     }
   }

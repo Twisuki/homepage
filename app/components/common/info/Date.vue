@@ -33,13 +33,13 @@ onMounted(() => {
 
 <template>
   <CommonInfoCard class="item">
-    <span>
+    <span class="date">
       {{ date.format("YYYY-MM-DD") }}
       <span class="time">
         {{ date.format("HH:mm") }}
       </span>
     </span>
-    <span>
+    <span class="holiday">
       {{ message }}
     </span>
   </CommonInfoCard>
@@ -51,6 +51,18 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+
+.date {
   font-size: 1.125rem;
+}
+
+.time {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.holiday {
+  font-size: 1rem;
 }
 </style>

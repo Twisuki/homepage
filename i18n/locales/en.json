@@ -7,5 +7,44 @@
     "github": "GitHub",
     "bilibili": "BiliBili",
     "x": "X"
+  },
+  "welcome": {
+    "hello_1": {
+      "prefix": "Hello, this is ",
+      "name": "Twisuki",
+      "suffix": " ~"
+    },
+    "hello_2": {
+      "prefix": "你好, 这里是 ",
+      "name": "Twisuki",
+      "suffix": " ~"
+    }
+  },
+  "subtitle": {
+    "title_1": "< Full-Stack Enthusiast",
+    "title_2": "Frontend Engineer >"
+  },
+  "info": {
+    "location": {
+      "city": "ChangSha",
+      "school": "Hunan University"
+    },
+    "progress": {
+      "failed": "Failed to fetch information",
+      "autumn": "Autumn Semester",
+      "winter": "Winter Vacation",
+      "spring": "Spring Semester",
+      "summer1": "Summer Semester",
+      "holiday": "Summer Vacation",
+      "summer2": "Summer Semester"
+    },
+    "date": {
+      "pending": "Fetching...",
+      "failed": "Failed to fetch",
+      "prefix": "Next: ",
+      "infix": " - ",
+      "suffix": " days",
+      "null": "No more holidays this year T_T"
+    }
   }
 }
