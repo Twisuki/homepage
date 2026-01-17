@@ -23,5 +23,22 @@
   "subtitle": {
     "title_1": "< Full-Stack Enthusiast",
     "title_2": "Frontend Engineer >"
+  },
+  "info": {
+    "location": {
+      "city": "长沙",
+      "school": "湖南大学"
+    },
+    "progress": {
+      "failed": "信息获取失败"
+    },
+    "date": {
+      "pending": "获取中...",
+      "failed": "获取失败",
+      "prefix": "距离",
+      "infix": "还有",
+      "suffix": "天",
+      "null": "今年的假日过完了T_T"
+    }
   }
 }

@@ -16,6 +16,14 @@ export default defineNuxtConfig({
     storage: "localStorage",
   },
   compatibilityDate: "2026-01-16",
+  nitro: {
+    routeRules: {
+      // 节假日 API 代理
+      "/api/holiday/**": {
+        proxy: "https://api.jiejiariapi.com/v1/holidays/**",
+      },
+    },
+  },
   i18n: {
     defaultLocale: "zh",
     locales: [
