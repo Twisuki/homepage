@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
 .current {
   transform: rotateX(0deg);
   transition:
-    transform var(--duration-long) ease,
+    transform var(--duration-long) ease var(--duration),
     opacity var(--duration-long) ease;
   z-index: 2;
 }
@@ -104,7 +104,7 @@ onBeforeUnmount(() => {
   transform: translateY(-50%) rotateX(90deg);
   transition:
     transform var(--duration-long) ease,
-    opacity var(--duration-long) ease var(--duration-long);
+    opacity var(--duration-long) ease var(--duration);
   opacity: 0;
   z-index: 1;
 }
@@ -112,6 +112,6 @@ onBeforeUnmount(() => {
 .entering {
   transform: translateY(50%) rotateX(-90deg);
   opacity: 0;
-  z-index: 1;
+  z-index: 0;
 }
 </style>
