@@ -10,6 +10,7 @@
   --text-color: #ffffff;
 
   --duration: 0.2s;
+  --duration-long: 1s;
 }
 
 .light-mode {

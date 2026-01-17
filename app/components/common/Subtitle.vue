@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
   <BaseCard
-    rounded
+    rounded="xl"
     class="container"
   >
     {{ displayed }}

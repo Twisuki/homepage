@@ -3,9 +3,12 @@
 </script>
 
 <template>
-  <div class="warpper">
+  <BaseCard
+    rounded
+    class="warpper"
+  >
     <slot />
-  </div>
+  </BaseCard>
 </template>
 
 <style scoped>

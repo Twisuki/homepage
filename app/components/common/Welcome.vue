@@ -44,7 +44,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container">
+  <BaseCard
+    rounded="xl"
+    class="container"
+  >
     <p class="title title-1">
       {{ displayed[0]?.prefix }}
       <span>{{ displayed[0]?.name }}</span>
@@ -55,7 +58,7 @@ onMounted(() => {
       <span>{{ displayed[1]?.name }}</span>
       {{ displayed[1]?.suffix }}
     </p>
-  </div>
+  </BaseCard>
 </template>
 
 <style scoped>
