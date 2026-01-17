@@ -5,17 +5,8 @@ const date = ref<Dayjs>(dayjs())
 
 let timer: number | null = null
 
-onMounted(() => {
-  timer = window.setInterval(() => {
-    date.value = dayjs()
-  }, 1000)
-})
-
-onBeforeUnmount(() => {
-  if (timer) clearInterval(timer)
-})
-
 const holiday = ref<HolidayData | 0 | Error | null>(null)
+
 const message = computed(() => {
   if (holiday.value === null) return $t("info.date.pending")
   if (holiday.value instanceof Error) return $t("info.date.failed")
@@ -24,10 +15,23 @@ const message = computed(() => {
   return $t("info.date.null")
 })
 
-onMounted(() => {
+const getHoliday = () => {
   getHolidayData()
     .then(response => holiday.value = response)
     .catch(error => holiday.value = error)
+}
+
+onMounted(() => {
+  timer = window.setInterval(() => {
+    if (!date.value.isSame(dayjs(), "day")) getHoliday()
+    date.value = dayjs()
+  }, 1000)
+
+  getHoliday()
+})
+
+onBeforeUnmount(() => {
+  if (timer) clearInterval(timer)
 })
 </script>
 
