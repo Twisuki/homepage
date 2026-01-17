@@ -109,8 +109,12 @@ const handleMenuToggle = () => {
   transition: transform var(--duration) ease var(--delay);
 
   & .content {
-    left: -0.5rem;
-    top: 100%;
+    --radius: 2rem;
+
+    transform: translate(
+      calc(-100% - var(--radius) * cos(var(--angle))),
+      calc(-50% + var(--radius) * sin(var(--angle)))
+    );
   }
 
   &.expand {
@@ -125,13 +129,13 @@ const handleMenuToggle = () => {
 .content {
   position: absolute;
   top: 50%;
-  left: -1rem;
+  left: 50%;
   width: 0;
   text-align: right;
   overflow: hidden;
   white-space: nowrap;
   font-size: 1rem;
-  transform: translate(-100%, -50%);
+  transform: translate(calc(-100% - 2rem), -50%);
   pointer-events: none;
   transition: width var(--duration) ease;
 }

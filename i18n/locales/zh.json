@@ -1,1 +1,23 @@
-{}
+{
+  "menu": {
+    "theme": "主题",
+    "repo": "仓库",
+    "contact": "联系方式",
+    "mail": "邮箱",
+    "github": "GitHub",
+    "bilibili": "B站",
+    "x": "X"
+  },
+  "welcome": {
+    "hello_1": {
+      "prefix": "你好, 这里是 ",
+      "name": "Twisuki",
+      "suffix": " ~"
+    },
+    "hello_2": {
+      "prefix": "Hello, this is ",
+      "name": "Twisuki",
+      "suffix": " ~"
+    }
+  }
+}

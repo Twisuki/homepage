@@ -1,1 +1,11 @@
-{}
+{
+  "menu": {
+    "theme": "Theme",
+    "repo": "Repo",
+    "contact": "Contact",
+    "mail": "Mail",
+    "github": "GitHub",
+    "bilibili": "BiliBili",
+    "x": "X"
+  }
+}
