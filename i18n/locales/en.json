@@ -1,5 +1,6 @@
 {
   "menu": {
+    "language": "Language",
     "theme": "Theme",
     "repo": "Repo",
     "contact": "Contact",

@@ -2,11 +2,14 @@
 interface Props {
   label: string
   icon: string
+  activeIcon?: string
   type: "a" | "menu" | "default"
   to?: string
   items?: Props[]
   callback?: () => void
 }
+
+// TODO(移动端适配): 添加展开方向属性, 目前只支持环形展开, 后续添加向下展开; 添加 slot
 
 const props = defineProps<Props>()
 
@@ -40,7 +43,7 @@ const handleMenuToggle = () => {
     :class="{ active: isActived }"
     @click="handleClick"
   >
-    <Icon :name="icon" />
+    <Icon :name="activeIcon && isActived ? activeIcon : icon" />
     <template v-if="props.type === 'menu'">
       <BaseMenuButton
         v-for="(item, index) in items"

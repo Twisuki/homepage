@@ -9,6 +9,7 @@ interface MenuItem {
 }
 
 const colorMode = useColorMode()
+const { locale, locales, setLocale } = useI18n()
 
 const contactItmes: MenuItem[] = [
   { label: $t("menu.mail"), icon: "tabler:at", type: "a", to: "mailto:suyang233@hotmail.com" },
@@ -21,10 +22,21 @@ const toggleTheme = () => {
   if (colorMode.value === "light") colorMode.value = "dark"
   else colorMode.value = "light"
 }
+
+const switchLanguage = () => {
+  const languages = locales.value.filter(item => item.code !== locale.value)
+  if (languages.length > 0 && languages[0]) setLocale(languages[0].code)
+}
 </script>
 
 <template>
   <div class="menu-container">
+    <BaseMenuButton
+      :label="$t('menu.language')"
+      icon="tabler:language"
+      type="default"
+      :callback="switchLanguage"
+    />
     <BaseMenuButton
       :label="$t('menu.theme')"
       :icon="colorMode.value === 'light' ? 'tabler:sun-high' : 'tabler:moon'"
@@ -40,6 +52,7 @@ const toggleTheme = () => {
     <BaseMenuButton
       :label="$t('menu.contact')"
       icon="tabler:mail"
+      active-icon="tabler:mail-opened"
       type="menu"
       :items="contactItmes"
     />
