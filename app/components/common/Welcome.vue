@@ -19,11 +19,7 @@ const displayed = reactive<Message[]>(
 
 const CHAR_DELAY = 100
 
-function sleep(ms: number) {
-  return new Promise(res => setTimeout(res, ms))
-}
-
-async function typePart(index: number, key: "prefix" | "name" | "suffix", text: string) {
+const typePart = async (index: number, key: "prefix" | "name" | "suffix", text: string) => {
   if (!text || !displayed[index]) return
   const target = displayed[index]
   target[key] = ""
@@ -33,7 +29,7 @@ async function typePart(index: number, key: "prefix" | "name" | "suffix", text: 
   }
 }
 
-async function typeMessage(index: number) {
+const typeMessage = async (index: number) => {
   const msg = messages[index]
   if (!msg) return
   await typePart(index, "prefix", String(msg.prefix))
@@ -42,9 +38,8 @@ async function typeMessage(index: number) {
 }
 
 onMounted(() => {
-  for (let i = 0; i < messages.length; i++) {
-    void typeMessage(i)
-  }
+  typeMessage(0)
+  typeMessage(1)
 })
 </script>
 
