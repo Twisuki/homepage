@@ -22,6 +22,10 @@ export default defineNuxtConfig({
       "/api/holiday/**": {
         proxy: "https://api.jiejiariapi.com/v1/holidays/**",
       },
+      // Blog 代理
+      "/api/blog/**": {
+        proxy: "https://blog.twis.uk/**",
+      },
     },
   },
   i18n: {

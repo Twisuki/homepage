@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const articles = ref<Article[] | null>(null)
+const articles = ref<Article[] | null | Error>(null)
 
 const BLOG = "https://blog.twis.uk"
 
@@ -10,6 +10,7 @@ const handleClick = (url: string) => {
 onMounted(() => {
   getBlogArticles(5)
     .then(response => articles.value = response)
+    .catch(error => articles.value = error)
 })
 </script>
 
@@ -19,7 +20,7 @@ onMounted(() => {
     class="container"
   >
     <div class="article-wapper">
-      <template v-if="articles">
+      <template v-if="articles && articles instanceof Array">
         <div
           v-for="article in articles"
           :key="article.title"
@@ -30,6 +31,12 @@ onMounted(() => {
           <span>{{ article.date }}</span>
         </div>
       </template>
+      <div
+        v-else-if="articles instanceof Error"
+        class="article"
+      >
+        加载失败...
+      </div>
       <div
         v-else
         class="article"

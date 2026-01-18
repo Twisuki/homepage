@@ -6,7 +6,7 @@ export interface Article {
   url: string
 }
 
-const BLOG_BASE = "https://blog.twis.uk/"
+const BLOG_BASE = "/api/blog/"
 
 export const getBlogArticles = async (n: number): Promise<Article[]> => {
   // 从 timeline 页面获取文章列表
