@@ -33,5 +33,6 @@ onMounted(() => {
   font-size: 1.5rem;
   text-align: center;
   line-height: 4rem;
+  cursor: default;
 }
 </style>

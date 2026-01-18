@@ -23,6 +23,6 @@
 img {
   width: 12rem;
   height: 12rem;
-  border-radius: 50%;
+  border-radius: var(--rounded-full);
 }
 </style>

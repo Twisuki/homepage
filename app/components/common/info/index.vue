@@ -84,6 +84,7 @@ onBeforeUnmount(() => {
   height: 4rem;
   perspective: 1000px;
   position: relative;
+  cursor: pointer;
 }
 
 .card-item {

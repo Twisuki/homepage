@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const articles = ref<Article[] | null>(null)
 
+const BLOG = "https://blog.twis.uk"
+
 const handleClick = (url: string) => {
   window.open(url, "_blank")
 }
-
-const BLOG = "https://blog.twis.uk"
 
 onMounted(() => {
   getBlogArticles(5)

@@ -80,10 +80,11 @@ const handleMenuToggle = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--rounded-full);
   background-color: var(--bg-button);
   font-size: 1.5rem;
   transition: background-color var(--duration) ease;
+  cursor: pointer;
 
   .active,
   :hover {

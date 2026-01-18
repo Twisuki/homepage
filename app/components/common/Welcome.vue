@@ -70,6 +70,7 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   padding: 0 2rem;
+  cursor: default;
 }
 
 .title-1 {
