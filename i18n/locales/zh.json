@@ -47,5 +47,10 @@
       "suffix": " 天",
       "null": "今年的假日过完了T_T"
     }
+  },
+  "blog": {
+    "failed": "获取失败",
+    "pending": "获取...",
+    "blogpage": "Blog 主站"
   }
 }

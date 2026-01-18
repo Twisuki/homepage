@@ -20,7 +20,7 @@ onMounted(() => {
     class="container"
   >
     <div class="article-wapper">
-      <template v-if="articles && articles instanceof Array">
+      <template v-if="articles && Array.isArray(articles)">
         <div
           v-for="article in articles"
           :key="article.title"
@@ -35,13 +35,13 @@ onMounted(() => {
         v-else-if="articles instanceof Error"
         class="article"
       >
-        加载失败...
+        {{ $t("blog.failed") }}
       </div>
       <div
         v-else
         class="article"
       >
-        加载中...
+        {{ $t("blog.pending") }}
       </div>
     </div>
     <div class="bottom">
@@ -50,7 +50,7 @@ onMounted(() => {
         :href="BLOG"
         target="_blank"
       >
-        Blog 主站
+        {{ $t("blog.blogpage") }}
       </a>
     </div>
   </BaseCard>

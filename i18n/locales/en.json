@@ -47,5 +47,10 @@
       "suffix": " days",
       "null": "No more holidays this year T_T"
     }
+  },
+  "blog": {
+    "failed": "Failed to fetch",
+    "pending": "Fetching...",
+    "blogpage": "Blog Page"
   }
 }
