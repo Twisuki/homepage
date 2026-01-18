@@ -50,7 +50,7 @@
   },
   "blog": {
     "failed": "获取失败",
-    "pending": "获取...",
+    "pending": "获取中...",
     "blogpage": "Blog 主站"
   }
 }

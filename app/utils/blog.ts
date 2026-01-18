@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 export interface Article {
   title: string
   date: string
-  url: string
+  route: string
 }
 
 const BLOG_BASE = "/api/blog/"
@@ -39,7 +39,7 @@ export const getBlogArticles = async (n: number): Promise<Article[]> => {
         return {
           title: title,
           date: dayjs(date).format("YYYY-MM-DD"),
-          url: `${BLOG_BASE}${route}`,
+          route: route,
         }
       })
       // 移除 null 项

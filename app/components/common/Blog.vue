@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const articles = ref<Article[] | null | Error>(null)
 
-const BLOG = "https://blog.twis.uk"
+const BLOG_SITE = "https://blog.twis.uk"
 
-const handleClick = (url: string) => {
-  window.open(url, "_blank")
+const handleClick = (route: string) => {
+  window.open(`${BLOG_SITE}${route}`, "_blank")
 }
 
 onMounted(() => {
@@ -25,7 +25,7 @@ onMounted(() => {
           v-for="article in articles"
           :key="article.title"
           class="article"
-          @click="handleClick(article.url)"
+          @click="handleClick(article.route)"
         >
           {{ article.title }}
           <span>{{ article.date }}</span>
@@ -47,7 +47,7 @@ onMounted(() => {
     <div class="bottom">
       <a
         class="button"
-        :href="BLOG"
+        :href="BLOG_SITE"
         target="_blank"
       >
         {{ $t("blog.blogpage") }}
