@@ -52,5 +52,10 @@
     "failed": "Failed to fetch",
     "pending": "Fetching...",
     "blogpage": "Blog Page"
+  },
+  "navbar": {
+    "resume": "Resume",
+    "projects": "Projects",
+    "friends": "Friends"
   }
 }

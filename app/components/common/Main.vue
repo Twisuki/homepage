@@ -4,21 +4,7 @@
 
 <template>
   <div class="container">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad asperiores, deserunt dolores esse explicabo id inventore ipsum laborum magni non nostrum nulla numquam, optio praesentium quis repudiandae sapiente, tempora!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad asperiores, deserunt dolores esse explicabo id inventore ipsum laborum magni non nostrum nulla numquam, optio praesentium quis repudiandae sapiente, tempora!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad asperiores, deserunt dolores esse explicabo id inventore ipsum laborum magni non nostrum nulla numquam, optio praesentium quis repudiandae sapiente, tempora!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad asperiores, deserunt dolores esse explicabo id inventore ipsum laborum magni non nostrum nulla numquam, optio praesentium quis repudiandae sapiente, tempora!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad asperiores, deserunt dolores esse explicabo id inventore ipsum laborum magni non nostrum nulla numquam, optio praesentium quis repudiandae sapiente, tempora!
-    </p>
+    <MainResume />
   </div>
 </template>
 

@@ -52,5 +52,10 @@
     "failed": "获取失败",
     "pending": "获取中...",
     "blogpage": "Blog 主站"
+  },
+  "navbar": {
+    "resume": "简历",
+    "projects": "项目",
+    "friends": "友链"
   }
 }

@@ -3,6 +3,9 @@
 </script>
 
 <template>
+  <p>
+    Friends
+  </p>
 </template>
 
 <style scoped>

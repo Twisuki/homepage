@@ -17,7 +17,7 @@ export const getBlogArticles = async (n: number): Promise<Article[]> => {
   const parser = new DOMParser()
   const doc = parser.parseFromString(html, "text/html")
 
-  const articles: Article[] = (
+  return (
     Array
       // 获取 li.timeline-item 列表
       .from(doc.querySelectorAll("li.timeline-item"))
@@ -49,6 +49,4 @@ export const getBlogArticles = async (n: number): Promise<Article[]> => {
       // 保留前 n 项
       .filter((_, index) => index < n)
   )
-
-  return articles
 }
