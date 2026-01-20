@@ -14,8 +14,7 @@ const SEMESTER_TYPES_MAP = new Map([
 
 const progress = (current: number, total: number) => {
   const filledLength = Math.round(PROGRESS_LENGTH * current / total)
-  const emptyLength = PROGRESS_LENGTH - filledLength
-  const bar = ">".repeat(filledLength) + "-".repeat(emptyLength)
+  const bar = ("=".repeat(filledLength) + ">").padEnd(PROGRESS_LENGTH, "-").slice(0, PROGRESS_LENGTH)
   return `[${bar}] ${current}/${total}`
 }
 </script>
