@@ -1,25 +1,23 @@
 <script setup lang="ts">
-interface Item {
-  name: string
-  isActived: boolean
+import type { Item } from "~/components/Desktop/MainSection.vue"
+
+interface Props {
+  navItems: Item[]
 }
 
 type UnderlineStatus = "toLeft" | "toRight" | "static"
 
-const navItems = computed<Item[]>(() => [
-  { name: "resume", isActived: true },
-  { name: "projects", isActived: false },
-  { name: "friends", isActived: false },
-])
+const props = defineProps<Props>()
+const emit = defineEmits(["switch"])
 
 const leftIndex = ref(0)
 const rightIndex = ref(0)
 const underlineStatus = ref<UnderlineStatus>("static")
 
 const handleClick = (target: number) => {
-  const from = navItems.value.findIndex(item => item.isActived)
-  navItems.value[from].isActived = false
-  navItems.value[target].isActived = true
+  const from = props.navItems.findIndex(item => item.isActived)
+
+  emit("switch", target)
 
   underlineStatus.value = (() => {
     if (from < target) return "toRight"
