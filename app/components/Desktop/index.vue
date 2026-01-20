@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="container">
+  <div class="page-container">
     <DesktopSideSection />
     <DesktopMainSection />
     <DesktopMenuSection />
@@ -11,7 +11,7 @@
 </template>
 
 <style scoped>
-.container {
+.page-container {
   width: 100%;
   max-width: 1024px;
   min-height: 100vh;

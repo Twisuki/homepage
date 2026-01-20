@@ -9,7 +9,7 @@
         <Desktop />
       </template>
       <template #tablet>
-        <Table />
+        <Tablet />
       </template>
     </BaseResponsive>
   </CommonBackground>
