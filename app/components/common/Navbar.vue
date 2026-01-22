@@ -125,7 +125,6 @@ const handleClick = (target: number) => {
   position: relative;
   width: 100%;
   height: 4px;
-  border-radius: var(--rounded-xl);
   overflow: hidden;
 }
 

@@ -10,17 +10,20 @@ const activeItem = computed(() => props.navItems.find(item => item.isActived)?.n
 </script>
 
 <template>
-  <div class="container">
+  <BaseCard
+    rounded="xl"
+    class="container"
+  >
     <MainResume v-if="activeItem === 'resume'" />
     <MainProject v-if="activeItem === 'projects'" />
     <MainFriends v-if="activeItem === 'friends'" />
-  </div>
+  </BaseCard>
 </template>
 
 <style scoped>
 .container {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--bg-card);
 }
 </style>
