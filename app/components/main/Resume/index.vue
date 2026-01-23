@@ -97,9 +97,19 @@ onMounted(() => {
       title="开发概况"
       icon="tabler:report-search"
     >
-      {{ wakaInfo }}
-      <!-- TODO: 接入 waka -->
-      <!-- Array.from(document.querySelectorAll("figure")).find(item => item.querySelector("figcaption").innerText === "Code Time").querySelector("img").src -->
+      <MainResumeFeature>
+        <template v-if="wakaInfo === null">
+          加载中 ...
+        </template>
+        <template v-else-if="wakaInfo instanceof Error">
+          加载失败
+        </template>
+        <template v-else>
+          自开始正式从事编程工作以来, 总开发时长 <BaseCode>{{ wakaInfo?.time }}</BaseCode>,
+          总代码行数 <BaseCode>{{ wakaInfo?.lines }}</BaseCode>,
+          具有丰富的开发经验.
+        </template>
+      </MainResumeFeature>
     </MainResumeContent>
   </div>
 </template>
