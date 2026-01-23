@@ -36,7 +36,7 @@ export const getWakaInfo = async (): Promise<WakaInfo> => {
           if (match && match[1] && match[2]) {
             const hours = match[1]
             const minutes = match[2]
-            return `${hours} h ${minutes} min`
+            return `${hours}h ${minutes}min`
           }
         }
         else if (index === 1) {
