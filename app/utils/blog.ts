@@ -18,9 +18,7 @@ export const getBlogArticles = async (n: number): Promise<Article[]> => {
   const doc = parser.parseFromString(html, "text/html")
 
   return (
-    Array
-      // 获取 li.timeline-item 列表
-      .from(doc.querySelectorAll("li.timeline-item"))
+    Array.from(doc.querySelectorAll("li.timeline-item"))
       // 提取标题、日期和链接
       .map((item) => {
         const a = item.querySelector("a")

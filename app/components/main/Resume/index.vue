@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import dayjs from "dayjs"
+
+const wakaInfo = ref<WakaInfo | null | Error>(null)
+
+onMounted(() => {
+  getWakaInfo()
+    .then(response => wakaInfo.value = response)
+    .catch(error => wakaInfo.value = error)
+})
 </script>
 
 <template>
@@ -89,7 +97,9 @@ import dayjs from "dayjs"
       title="开发概况"
       icon="tabler:report-search"
     >
+      {{ wakaInfo }}
       <!-- TODO: 接入 waka -->
+      <!-- Array.from(document.querySelectorAll("figure")).find(item => item.querySelector("figcaption").innerText === "Code Time").querySelector("img").src -->
     </MainResumeContent>
   </div>
 </template>

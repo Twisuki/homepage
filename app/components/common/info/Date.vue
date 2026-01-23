@@ -15,19 +15,19 @@ const message = computed(() => {
   return $t("info.date.null")
 })
 
-const getHoliday = () => {
-  getHolidayData()
+const updateHoliday = () => {
+  getHoliday()
     .then(response => holiday.value = response)
     .catch(error => holiday.value = error)
 }
 
 onMounted(() => {
   timer = window.setInterval(() => {
-    if (!date.value.isSame(dayjs(), "day")) getHoliday()
+    if (!date.value.isSame(dayjs(), "day")) updateHoliday()
     date.value = dayjs()
   }, 1000)
 
-  getHoliday()
+  updateHoliday()
 })
 
 onBeforeUnmount(() => {

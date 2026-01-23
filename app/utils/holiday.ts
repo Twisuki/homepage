@@ -37,7 +37,7 @@ const getNextHoliday = (data: { [key: string]: HolidayAPI }): HolidayData | 0 =>
 }
 
 // 获取数据
-export const getHolidayData = async () => {
+export const getHoliday = async () => {
   const year = dayjs().format("YYYY")
   const res = await fetch(`${HOLIDAY_API}${year}`)
   const data = await res.json()
