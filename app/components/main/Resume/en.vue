@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import dayjs from "dayjs"
 
-const wakaInfo = ref<WakaInfo | null | Error>(null)
-
-onMounted(() => {
-  getWakaInfo()
-    .then(response => wakaInfo.value = response)
-    .catch(error => wakaInfo.value = error)
-})
+defineProps<{
+  wakaInfo: WakaInfo | null | Error
+}>()
 </script>
 
 <template>

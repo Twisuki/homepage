@@ -1,15 +1,21 @@
 <script setup lang="ts">
+const wakaInfo = ref<WakaInfo | null | Error>(null)
 
+onMounted(() => {
+  getWakaInfo()
+    .then(response => wakaInfo.value = response)
+    .catch(error => wakaInfo.value = error)
+})
 </script>
 
 <template>
   <div class="resume">
     <BaseLanguage>
       <template #zh>
-        <MainResumeZh />
+        <MainResumeZh :waka-info="wakaInfo" />
       </template>
       <template #en>
-        <MainResumeEn />
+        <MainResumeEn :waka-info="wakaInfo" />
       </template>
     </BaseLanguage>
   </div>
