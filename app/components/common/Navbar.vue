@@ -20,8 +20,8 @@ const handleClick = (target: number) => {
   emit("switch", target)
 
   underlineStatus.value = (() => {
-    if (from < target) return "toRight"
-    if (from > target) return "toLeft"
+    if (from < target) return "toLeft"
+    if (from > target) return "toRight"
     return "static"
   })()
 
