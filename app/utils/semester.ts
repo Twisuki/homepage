@@ -43,7 +43,7 @@ export interface Semester {
 }
 
 export const getSemester = (): Semester | null => {
-  const today = dayjs("2026-2-25")
+  const today = dayjs()
   for (const semeter of semesterDatas) {
     const startDate = dayjs(semeter.startDate)
     const endDate = startDate.add(semeter.weeks * 7, "day")
