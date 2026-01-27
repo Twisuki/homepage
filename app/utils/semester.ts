@@ -32,33 +32,32 @@ export interface SemesterData {
  * @property{string} year - 学期年份
  *   @example "2025-2026"
  * @property{"autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"} type - 学期类型
+ * @property{number} day - 当前天数
  * @property{number} weeks - 总周数
- * @property{number} currentWeek - 当前周数
  */
 export interface Semester {
   year: string
   type: "autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"
+  day: number
   weeks: number
-  currentWeek: number
 }
 
 export const getSemester = (): Semester | null => {
-  const today = dayjs()
+  const today = dayjs("2026-2-25")
   for (const semeter of semesterDatas) {
     const startDate = dayjs(semeter.startDate)
     const endDate = startDate.add(semeter.weeks * 7, "day")
 
     if (today.isBetween(startDate, endDate, "day", "[]")) {
-      const daysSinceStart = today.diff(startDate, "day", true)
-      const currentWeek = Math.ceil(daysSinceStart / 7) || 1
+      const day = today.diff(startDate, "day", true)
 
       const year = startDate.year()
 
       return {
         year: `${year}-${year + 1}`,
         type: semeter.type,
+        day: day,
         weeks: semeter.weeks,
-        currentWeek: currentWeek,
       }
     }
   }

@@ -12,10 +12,12 @@ const SEMESTER_TYPES_MAP = new Map([
   ["summer2", $t("info.progress.summer2")],
 ])
 
-const progress = (current: number, total: number) => {
-  const filledLength = Math.round(PROGRESS_LENGTH * current / total)
+const progress = (day: number, weeks: number) => {
+  const week = Math.ceil(day / 7)
+  const days = weeks * 7
+  const filledLength = Math.round(PROGRESS_LENGTH * day / days)
   const bar = ("=".repeat(filledLength) + ">").padEnd(PROGRESS_LENGTH, "-").slice(0, PROGRESS_LENGTH)
-  return `[${bar}] ${current}/${total}`
+  return `[${bar}] ${week}/${weeks}`
 }
 </script>
 
@@ -26,7 +28,7 @@ const progress = (current: number, total: number) => {
         {{ semester.year }} {{ SEMESTER_TYPES_MAP.get(semester.type) }}
       </span>
       <span class="progress">
-        {{ progress(semester.currentWeek, semester.weeks) }}
+        {{ progress(semester.day, semester.weeks) }}
       </span>
     </template>
     <template v-else>
@@ -37,6 +39,7 @@ const progress = (current: number, total: number) => {
 
 <style scoped>
 .item span {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
