@@ -1,0 +1,76 @@
+/* 用于 Main Component 的左右切换动画 */
+/* 由于 Vue SFC CSS 作用域问题, 提取本样式到全局 */
+
+.mca-contaienr.shown {
+	opacity: 1;
+}
+
+.mca-contaienr.hidden {
+	opacity: 0;
+	display: none;
+}
+
+.mca-item {
+	--index: 1;
+	animation-delay: calc(var(--index) * var(--duration));
+}
+
+.mca-contaienr.left-out .mca-item {
+	animation: leftOut var(--duration) forwards;
+}
+
+.mca-contaienr.right-out .mca-item {
+	animation: rightOut var(--duration) forwards;
+}
+
+.mca-contaienr.left-in .mca-item {
+	animation: leftIn var(--duration) forwards;
+}
+
+.mca-contaienr.right-in .mca-item {
+	animation: rightIn var(--duration) forwards;
+}
+
+@keyframes leftOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes rightOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+@keyframes leftIn {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rightIn {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

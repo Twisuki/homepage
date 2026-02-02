@@ -7,11 +7,12 @@ defineProps<{
 </script>
 
 <template>
-  <MainResumeSnake />
+  <MainResumeSnake class="section" />
 
   <MainResumeContent
     title="Technical Skills"
     icon="tabler:device-desktop-code"
+    class="section"
   >
     <MainResumeFeature title="Frontend:">
       Proficient in
@@ -75,6 +76,7 @@ defineProps<{
   <MainResumeContent
     title="Education Background"
     icon="tabler:school"
+    class="section"
   >
     <MainResumeFeature>
       Currently a {{
@@ -91,6 +93,7 @@ defineProps<{
   <MainResumeContent
     title="Development Overview"
     icon="tabler:report-search"
+    class="section"
   >
     <MainResumeFeature>
       <template v-if="wakaInfo === null">

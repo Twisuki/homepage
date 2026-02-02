@@ -12,10 +12,14 @@ onMounted(() => {
   <div class="resume">
     <BaseLanguage>
       <template #zh>
-        <MainResumeZh :waka-info="wakaInfo" />
+        <MainResumeZh
+          :waka-info="wakaInfo"
+        />
       </template>
       <template #en>
-        <MainResumeEn :waka-info="wakaInfo" />
+        <MainResumeEn
+          :waka-info="wakaInfo"
+        />
       </template>
     </BaseLanguage>
   </div>
