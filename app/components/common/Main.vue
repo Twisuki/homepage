@@ -3,78 +3,47 @@ import type { Item } from "~/components/Desktop/MainSection.vue"
 
 interface Props {
   navItems: Item[]
+  direction: "left" | "right"
 }
 
-export type Status = "leftIn" | "rightIn" | "leftOut" | "rightOut" | "shown" | "hidden"
-
 const props = defineProps<Props>()
+
 const activeIndex = computed(() => props.navItems.findIndex(item => item.isActived))
 
-const status = ref<Status[]>(
-  props.navItems.map(item => item.isActived ? "shown" : "hidden"),
-)
+// 定义组件映射
+const componentMap = {
+  resume: resolveComponent("MainResume"),
+  projects: resolveComponent("MainProject"),
+  friends: resolveComponent("MainFriends"),
+} as const
 
-watch(activeIndex, (newVal, oldVal) => {
-  if (newVal === oldVal) return
+// 获取当前激活的组件
+const activeComponent = computed(() => {
+  const item = props.navItems[activeIndex.value]
+  return item ? componentMap[item.name as keyof typeof componentMap] : null
+})
 
-  if (newVal > oldVal) {
-    status.value[oldVal] = "leftOut"
-    status.value[newVal] = "rightIn"
-  }
-  else {
-    status.value[oldVal] = "rightOut"
-    status.value[newVal] = "leftIn"
-  }
-
-  setTimeout(() => {
-    status.value[oldVal] = "hidden"
-    status.value[newVal] = "shown"
-  }, 400)
+// 根据导航方向计算动画类名
+const transitionName = computed(() => {
+  return props.direction === "left" ? "to-left" : "to-right"
 })
 </script>
 
 <template>
   <BaseCard
-    ref="containerRef"
     rounded="xl"
     class="container"
   >
-    <MainResume
-      class="content mca-contaienr"
-      :class="{
-        'shown': status[0] === 'shown',
-        'hidden': status[0] === 'hidden',
-        'left-out': status[0] === 'leftOut',
-        'right-out': status[0] === 'rightOut',
-        'left-in': status[0] === 'leftIn',
-        'right-in': status[0] === 'rightIn',
-      }"
-      :style="{ '--z-index': (activeIndex + 2) % 3 }"
-    />
-    <MainProject
-      class="content mca-contaienr"
-      :class="{
-        'shown': status[1] === 'shown',
-        'hidden': status[1] === 'hidden',
-        'left-out': status[1] === 'leftOut',
-        'right-out': status[1] === 'rightOut',
-        'left-in': status[1] === 'leftIn',
-        'right-in': status[1] === 'rightIn',
-      }"
-      :style="{ '--z-index': (activeIndex + 1) % 3 }"
-    />
-    <MainFriends
-      class="content mca-contaienr"
-      :class="{
-        'shown': status[2] === 'shown',
-        'hidden': status[2] === 'hidden',
-        'left-out': status[2] === 'leftOut',
-        'right-out': status[2] === 'rightOut',
-        'left-in': status[2] === 'leftIn',
-        'right-in': status[2] === 'rightIn',
-      }"
-      :style="{ '--z-index': (activeIndex) % 3 }"
-    />
+    <Transition
+      :name="transitionName"
+      mode="out-in"
+    >
+      <component
+        :is="activeComponent"
+        :key="activeIndex"
+        class="content"
+      />
+    </Transition>
   </BaseCard>
 </template>
 
@@ -83,14 +52,70 @@ watch(activeIndex, (newVal, oldVal) => {
   width: 100%;
   padding: 1rem;
   overflow: hidden;
+  position: relative;
+  min-height: 400px;
 }
 
 .content {
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<style>
+/* Vue Transition 动画 */
+
+.to-left-enter-active,
+.to-left-leave-active {
+  transition: all var(--duration) ease;
+}
+
+.to-left-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.to-left-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.to-left-leave-active {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  --z-index: 1;
+}
 
-  z-index: var(--z-index);
+.to-right-enter-active,
+.to-right-leave-active {
+  transition: all var(--duration) ease;
+}
+
+.to-right-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.to-right-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.to-right-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 </style>

@@ -1,5 +1,4 @@
 @import "modern-css-reset";
-@import "main-component-animation.css";
 
 :root {
   --bg: rgba(0, 0, 0, 0.4);

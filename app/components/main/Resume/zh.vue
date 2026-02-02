@@ -7,20 +7,12 @@ defineProps<{
 </script>
 
 <template>
-  <MainResumeSnake
-    class="mca-item"
-    :style="{
-      '--index': 2,
-    }"
-  />
+  <MainResumeSnake class="section" />
 
   <MainResumeContent
     title="技能专长"
     icon="tabler:device-desktop-code"
-    class="mca-item"
-    :style="{
-      '--index': 1000,
-    }"
+    class="section"
   >
     <MainResumeFeature title="前端开发:">
       精通
@@ -84,7 +76,7 @@ defineProps<{
   <MainResumeContent
     title="教育背景"
     icon="tabler:school"
-    class="mca-item"
+    class="section"
   >
     <MainResumeFeature>
       就读于湖南大学人工智能专业, 现在大{{
@@ -101,7 +93,7 @@ defineProps<{
   <MainResumeContent
     title="开发概况"
     icon="tabler:report-search"
-    class="mca-item"
+    class="section"
   >
     <MainResumeFeature>
       <template v-if="wakaInfo === null">
