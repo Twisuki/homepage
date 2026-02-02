@@ -69,4 +69,34 @@ onBeforeUnmount(() => {
 .holiday {
   font-size: 1rem;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .date {
+    font-size: 1rem;
+  }
+
+  .time {
+    font-size: 1.25rem;
+  }
+
+  .holiday {
+    font-size: 0.9rem;
+  }
+}
+
+/* 小屏幕适配 (<640px) */
+@media (max-width: 640px) {
+  .date {
+    font-size: 0.95rem;
+  }
+
+  .time {
+    font-size: 1.125rem;
+  }
+
+  .holiday {
+    font-size: 0.85rem;
+  }
+}
 </style>

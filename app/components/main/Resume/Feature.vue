@@ -54,4 +54,25 @@ withDefaults(defineProps<Props>(), {
   flex: 1;
   font-size: 1rem;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .feature {
+    gap: 0.4rem;
+  }
+
+  .title {
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .index {
+    width: 7px;
+    height: 7px;
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
 </style>

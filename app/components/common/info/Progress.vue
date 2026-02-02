@@ -54,4 +54,26 @@ const progress = (day: number, weeks: number) => {
   font-size: 1rem;
   font-weight: bold;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .name {
+    font-size: 0.8rem;
+  }
+
+  .progress {
+    font-size: 0.9rem;
+  }
+}
+
+/* 小屏幕适配 (<640px) */
+@media (max-width: 640px) {
+  .name {
+    font-size: 0.75rem;
+  }
+
+  .progress {
+    font-size: 0.8rem;
+  }
+}
 </style>

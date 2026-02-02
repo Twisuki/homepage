@@ -139,4 +139,25 @@ onMounted(() => {
     background-color: var(--bg-button-active);
   }
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 13rem;
+    padding: 0.875rem;
+  }
+
+  .article-wapper {
+    width: 10.5rem;
+  }
+
+  .article {
+    width: 10.5rem;
+    font-size: 0.9rem;
+  }
+
+  .article span {
+    font-size: 0.8rem;
+  }
+}
 </style>

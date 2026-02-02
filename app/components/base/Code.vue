@@ -31,4 +31,12 @@ defineProps<Props>()
     background-color: var(--bg-button-hover);
   }
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .code {
+    padding: 0 0.625rem;
+    font-size: 0.9rem;
+  }
+}
 </style>

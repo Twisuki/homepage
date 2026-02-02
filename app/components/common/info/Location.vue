@@ -23,4 +23,20 @@
   gap: 0.5rem;
   font-size: 1.125rem;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .item span {
+    font-size: 1rem;
+    gap: 0.4rem;
+  }
+}
+
+/* 小屏幕适配 (<640px) */
+@media (max-width: 640px) {
+  .item span {
+    font-size: 0.95rem;
+    gap: 0.375rem;
+  }
+}
 </style>

@@ -45,4 +45,20 @@
   overflow-y: scroll;
   justify-content: center;
 }
+
+/* 小屏幕适配 - 调整背景图位置 */
+@media (max-width: 768px) {
+  .container::before {
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+/* 移动端滚动条优化 */
+@media (max-width: 768px) {
+  .main {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 </style>

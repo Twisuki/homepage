@@ -35,4 +35,14 @@ onMounted(() => {
   line-height: 4rem;
   cursor: default;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1.25rem;
+    line-height: 3.5rem;
+  }
+}
 </style>

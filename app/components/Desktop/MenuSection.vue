@@ -69,6 +69,16 @@ const switchLanguage = () => {
   gap: 1rem;
 }
 
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .menu-container {
+    right: 1.5rem;
+    top: 1.5rem;
+    gap: 0.75rem;
+  }
+}
+
+/* 平板横屏和小屏幕 */
 @media (max-width: 1024px) {
   .menu-container {
     flex-direction: row-reverse;

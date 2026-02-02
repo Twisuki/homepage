@@ -148,4 +148,27 @@ const handleMenuToggle = () => {
   --width: 0rem;
   width: var(--width);
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.375rem;
+  }
+
+  .item {
+    width: 1.875rem;
+    height: 1.875rem;
+    font-size: 1.125rem;
+
+    &.expand {
+      --radius: 3.5rem;
+    }
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
 </style>

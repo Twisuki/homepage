@@ -64,4 +64,18 @@ const handleSwitch = (target: number) => {
   gap: 2rem;
   padding-top: 1.5rem;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main-container {
+    flex: 2;
+    gap: 1.5rem;
+  }
+
+  .title {
+    height: 13rem;
+    gap: 1.5rem;
+    padding-top: 3rem;
+  }
+}
 </style>

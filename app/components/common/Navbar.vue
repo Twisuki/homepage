@@ -148,6 +148,20 @@ const handleClick = (target: number) => {
   animation: toLeft calc(var(--duration) * 2) forwards;
 }
 
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    gap: 0.75rem;
+    --gap: 0.75rem;
+    --item-width: calc((100% - 1.5rem) / 3);
+  }
+
+  .item {
+    font-size: 1.125rem;
+    padding: 0.2rem;
+  }
+}
+
 @keyframes toRight {
   0% {
     transform: translateX(-100%);

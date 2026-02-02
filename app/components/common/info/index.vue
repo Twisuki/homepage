@@ -115,4 +115,12 @@ onBeforeUnmount(() => {
   opacity: 0;
   z-index: 0;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 13rem;
+    height: 3.5rem;
+  }
+}
 </style>

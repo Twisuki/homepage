@@ -65,4 +65,21 @@ defineProps<Props>()
   display: flex;
   flex-direction: column;
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content-container {
+    gap: 0.875rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    gap: 0.875rem;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
 </style>

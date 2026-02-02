@@ -56,3 +56,22 @@
 body {
   font-family: "Maple Mono", "sans-serif";
 }
+
+/* 响应式字体大小调整 */
+html {
+  font-size: 16px;
+}
+
+/* 小屏幕适配 (<640px) */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* 中等移动端屏幕适配 (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}

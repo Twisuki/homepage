@@ -18,5 +18,23 @@
 </template>
 
 <style scoped>
+.snake {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.snake img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .snake img {
+    max-width: 100%;
+  }
+}
 </style>

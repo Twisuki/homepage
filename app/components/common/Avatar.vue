@@ -25,4 +25,17 @@ img {
   height: 12rem;
   border-radius: var(--rounded-full);
 }
+
+/* 中等屏幕适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .avatar {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
 </style>
