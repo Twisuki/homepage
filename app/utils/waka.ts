@@ -24,33 +24,31 @@ export const getWakaInfo = async (): Promise<WakaInfo> => {
   const doc = parser.parseFromString(match[1], "text/html")
 
   // 从图片中获取 times 和 lines
-  const [time, lines] = (
-    Array.from(doc.querySelectorAll("figure"))
-      .map((figure, index) => {
-        const src = figure.querySelector("img")?.src
-        if (!src) return ""
+  let [time, lines] = ["", ""]
+  Array.from(doc.querySelectorAll("figure"))
+    .map((figure) => {
+      const src = figure.querySelector("img")?.src
+      if (!src) return ""
 
-        if (index === 0) {
-          const regex = /Code%20Time-(\d+)%20hrs%20(\d+)%20mins-blue/
-          const match = src.match(regex)
-          if (match && match[1] && match[2]) {
-            const hours = match[1]
-            const minutes = match[2]
-            return `${hours}h ${minutes}min`
-          }
+      {
+        const regex = /Code%20Time-(\d+)%20hrs%20(\d+)%20mins-blue/
+        const match = src.match(regex)
+        if (match && match[1] && match[2]) {
+          const hours = match[1]
+          const minutes = match[2]
+          time = `${hours}h ${minutes}min`
         }
-        else if (index === 1) {
-          const regex = /-(\d+\.\d+)%20thousand%20lines%20of%20code-blue/
-          const match = src.match(regex)
-          if (match && match[0]) {
-            const lines = match[1]
-            return `${lines}k`
-          }
-        }
+      }
 
-        return ""
-      })
-  )
+      {
+        const regex = /-(\d+\.\d+)%20thousand%20lines%20of%20code-blue/
+        const match = src.match(regex)
+        if (match && match[0]) {
+          const number = match[1]
+          lines = `${number}k`
+        }
+      }
+    })
 
   return {
     time: time || "",

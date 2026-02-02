@@ -104,9 +104,9 @@ defineProps<{
       </template>
       <template v-else>
         Since officially starting programming work, total development time is
-        <BaseCode>{{ wakaInfo?.time }}</BaseCode>,
+        <BaseCode>{{ wakaInfo.time || "..." }}</BaseCode>,
         with total lines of code at
-        <BaseCode>{{ wakaInfo?.lines }}</BaseCode>,
+        <BaseCode>{{ wakaInfo.lines || "..." }}</BaseCode>,
         demonstrating extensive development experience.
       </template>
     </MainResumeFeature>

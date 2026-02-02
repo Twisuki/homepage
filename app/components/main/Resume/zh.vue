@@ -111,8 +111,8 @@ defineProps<{
         加载失败
       </template>
       <template v-else>
-        自开始正式从事编程工作以来, 总开发时长 <BaseCode>{{ wakaInfo?.time }}</BaseCode>,
-        总代码行数 <BaseCode>{{ wakaInfo?.lines }}</BaseCode>,
+        自开始正式从事编程工作以来, 总开发时长 <BaseCode>{{ wakaInfo.time || "..." }}</BaseCode>,
+        总代码行数 <BaseCode>{{ wakaInfo.lines || "..." }}</BaseCode>,
         具有丰富的开发经验.
       </template>
     </MainResumeFeature>
