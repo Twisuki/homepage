@@ -86,7 +86,11 @@ defineProps<{
     <MainResumeFeature>
       现就职于湖南大学易千网络文化工作室, 负责
       <BaseCode>湖南大学微生活</BaseCode>
-      小程序和工作室其他项目的开发运维工作.
+      小程序,
+      <BaseCode to="https://github.com/qnxg/hnu-doc-frontend">
+        湖南大学试卷库
+      </BaseCode>
+      和工作室其他项目的开发运维工作.
     </MainResumeFeature>
   </MainResumeContent>
 

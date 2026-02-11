@@ -86,7 +86,11 @@ defineProps<{
     <MainResumeFeature>
       Currently working at Hunan University's Yiqian Network Culture Studio, responsible for developing and maintaining the
       <BaseCode>HNU Micro Life</BaseCode>
-      mini-program and other studio projects.
+      mini-program,
+      <BaseCode to="https://github.com/qnxg/hnu-doc-frontend">
+        HNU Exam Paper Library
+      </BaseCode>
+      and other studio projects.
     </MainResumeFeature>
   </MainResumeContent>
 
