@@ -7,7 +7,7 @@ let timer: number | null = null
 
 const holiday = ref<HolidayData | 0 | Error | null>(null)
 
-const message = computed(() => {
+const _message = computed(() => {
   if (holiday.value === null) return $t("info.date.pending")
   if (holiday.value instanceof Error) return $t("info.date.failed")
   if (holiday.value)
@@ -44,7 +44,8 @@ onBeforeUnmount(() => {
       </span>
     </span>
     <span class="holiday">
-      {{ message }}
+      <!--      {{ message }} -->
+      节假日 API 提供方跑路了 T_T
     </span>
   </CommonInfoCard>
 </template>
