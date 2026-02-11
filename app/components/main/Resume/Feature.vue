@@ -12,8 +12,8 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="feature">
+    <span class="index" />
     <span class="title">
-      <span class="index" />
       <slot name="title">
         {{ title }}
       </slot>
@@ -30,29 +30,31 @@ withDefaults(defineProps<Props>(), {
 
 <style scoped>
 .feature {
+  position: relative;
   width: 100%;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  padding-left: 1rem;
+  font-size: 1rem;
 }
 
 .title {
   display: flex;
-  height: 1.75rem;
   align-items: center;
-  font-size: 1.125rem;
-  gap: 0.5rem;
 }
 
 .index {
+  position: absolute;
   width: 8px;
   height: 8px;
+  left: 0;
+  top: 0.5rem;
   background-color: var(--text-color);
   border-radius: var(--rounded-full);
 }
 
 .content {
   flex: 1;
-  font-size: 1rem;
 }
 
 /* 中等屏幕适配 (768px - 1024px) */
