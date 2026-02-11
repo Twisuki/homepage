@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     routeRules: {
       // 节假日 API 代理
       "/api/holiday/**": {
-        proxy: "https://api.jiejiariapi.com/v1/holidays/**",
+        proxy: "https://holiday.ailcc.com/api/holiday/year/**",
       },
       // Blog 代理
       "/api/blog/**": {
