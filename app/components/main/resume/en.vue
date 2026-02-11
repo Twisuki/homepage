@@ -86,7 +86,7 @@ defineProps<{
       <BaseCode>HNU Micro Life</BaseCode>
       mini-program,
       <BaseCode to="https://github.com/qnxg/hnu-doc-frontend">
-        HNU Exam Paper Library
+        HNU Exam Paper Archive
       </BaseCode>
       and other studio projects.
     </MainFeature>
