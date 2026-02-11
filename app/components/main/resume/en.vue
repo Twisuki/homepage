@@ -7,14 +7,13 @@ defineProps<{
 </script>
 
 <template>
-  <MainResumeSnake class="section" />
+  <MainResumeSnake />
 
-  <MainResumeContent
+  <MainContent
     title="Technical Skills"
     icon="tabler:device-desktop-code"
-    class="section"
   >
-    <MainResumeFeature title="Frontend:">
+    <MainFeature title="Frontend:">
       Proficient in
       <BaseCode to="https://vuejs.org/">
         Vue.js 3
@@ -36,8 +35,8 @@ defineProps<{
         Next.js
       </BaseCode>
       , capable of cross-framework development.
-    </MainResumeFeature>
-    <MainResumeFeature title="Languages:">
+    </MainFeature>
+    <MainFeature title="Languages:">
       Highly proficient in
       <BaseCode to="https://www.typescriptlang.org/">
         TypeScript
@@ -53,8 +52,8 @@ defineProps<{
         Python
       </BaseCode>
       , with backend development and data processing capabilities.
-    </MainResumeFeature>
-    <MainResumeFeature title="Practices:">
+    </MainFeature>
+    <MainFeature title="Practices:">
       Familiar with build tools like
       <BaseCode to="https://vitejs.dev/">
         Vite
@@ -70,20 +69,19 @@ defineProps<{
         ESLint
       </BaseCode>
       configurations to maintain clean and consistent code.
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 
-  <MainResumeContent
+  <MainContent
     title="Education Background"
     icon="tabler:school"
-    class="section"
   >
-    <MainResumeFeature>
+    <MainFeature>
       Currently a {{
         ["first", "second", "third", "fourth"][dayjs().diff("2024-9-1", "year") - (dayjs().month() < 8 ? 1 : 0) + 1]
       }} - year student majoring in Artificial Intelligence at Hunan University
-    </MainResumeFeature>
-    <MainResumeFeature>
+    </MainFeature>
+    <MainFeature>
       Currently working at Hunan University's Yiqian Network Culture Studio, responsible for developing and maintaining the
       <BaseCode>HNU Micro Life</BaseCode>
       mini-program,
@@ -91,15 +89,14 @@ defineProps<{
         HNU Exam Paper Library
       </BaseCode>
       and other studio projects.
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 
-  <MainResumeContent
+  <MainContent
     title="Development Overview"
     icon="tabler:report-search"
-    class="section"
   >
-    <MainResumeFeature>
+    <MainFeature>
       <template v-if="wakaInfo === null">
         Loading...
       </template>
@@ -113,8 +110,8 @@ defineProps<{
         <BaseCode>{{ wakaInfo.lines || "..." }}</BaseCode>,
         demonstrating extensive development experience.
       </template>
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 </template>
 
 <style scoped>

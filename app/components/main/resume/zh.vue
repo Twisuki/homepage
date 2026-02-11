@@ -7,14 +7,13 @@ defineProps<{
 </script>
 
 <template>
-  <MainResumeSnake class="section" />
+  <MainResumeSnake />
 
-  <MainResumeContent
+  <MainContent
     title="技能专长"
     icon="tabler:device-desktop-code"
-    class="section"
   >
-    <MainResumeFeature title="前端开发:">
+    <MainFeature title="前端开发:">
       精通
       <BaseCode to="https://vuejs.org/">
         Vue.js 3
@@ -36,8 +35,8 @@ defineProps<{
         Next.js
       </BaseCode>
       , 具备跨框架开发能力.
-    </MainResumeFeature>
-    <MainResumeFeature title="编程语言:">
+    </MainFeature>
+    <MainFeature title="编程语言:">
       熟练掌握
       <BaseCode to="https://www.typescriptlang.org/">
         TypeScript
@@ -53,8 +52,8 @@ defineProps<{
         Python
       </BaseCode>
       , 与具备一定的后端开发和数据处理能力.
-    </MainResumeFeature>
-    <MainResumeFeature title="工程化:">
+    </MainFeature>
+    <MainFeature title="工程化:">
       熟悉
       <BaseCode to="https://vitejs.dev/">
         Vite
@@ -70,20 +69,19 @@ defineProps<{
         ESLint
       </BaseCode>
       设置, 保持代码整洁和一致性.
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 
-  <MainResumeContent
+  <MainContent
     title="教育背景"
     icon="tabler:school"
-    class="section"
   >
-    <MainResumeFeature>
+    <MainFeature>
       就读于湖南大学人工智能专业, 现在大{{
         ["一", "二", "三", "四"][dayjs().diff("2024-9-1", "year") - (dayjs().month() < 8 ? 1 : 0) + 1]
       }}.
-    </MainResumeFeature>
-    <MainResumeFeature>
+    </MainFeature>
+    <MainFeature>
       现就职于湖南大学易千网络文化工作室, 负责
       <BaseCode>湖南大学微生活</BaseCode>
       小程序,
@@ -91,15 +89,14 @@ defineProps<{
         湖南大学试卷库
       </BaseCode>
       和工作室其他项目的开发运维工作.
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 
-  <MainResumeContent
+  <MainContent
     title="开发概况"
     icon="tabler:report-search"
-    class="section"
   >
-    <MainResumeFeature>
+    <MainFeature>
       <template v-if="wakaInfo === null">
         加载中 ...
       </template>
@@ -111,8 +108,8 @@ defineProps<{
         总代码行数 <BaseCode>{{ wakaInfo.lines || "..." }}</BaseCode>,
         具有丰富的开发经验.
       </template>
-    </MainResumeFeature>
-  </MainResumeContent>
+    </MainFeature>
+  </MainContent>
 </template>
 
 <style scoped>
