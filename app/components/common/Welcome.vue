@@ -53,11 +53,15 @@ onMounted(() => {
       <span>{{ displayed[0]?.name }}</span>
       {{ displayed[0]?.suffix }}
     </p>
-    <p class="title title-2">
-      {{ displayed[1]?.prefix }}
-      <span>{{ displayed[1]?.name }}</span>
-      {{ displayed[1]?.suffix }}
-    </p>
+    <BaseResponsive>
+      <template #desktop>
+        <p class="title title-2">
+          {{ displayed[1]?.prefix }}
+          <span>{{ displayed[1]?.name }}</span>
+          {{ displayed[1]?.suffix }}
+        </p>
+      </template>
+    </BaseResponsive>
   </BaseCard>
 </template>
 

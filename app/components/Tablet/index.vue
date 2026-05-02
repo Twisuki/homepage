@@ -17,9 +17,9 @@
   min-height: 100vh;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: start;
-  padding: calc(10vh) 2rem 2rem;
+  justify-content: start;
+  align-items: center;
+  margin-top: 4rem;
   gap: 2rem;
   color: var(--text-color);
 }

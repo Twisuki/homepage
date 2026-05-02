@@ -38,5 +38,9 @@
   .hero-container {
     gap: 1.75rem;
   }
+
+  .title {
+    width: 100%;
+  }
 }
 </style>
