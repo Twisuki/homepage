@@ -2,3 +2,7 @@
 @import "tw-animate";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+body {
+	font-family: "Maple Mono CN", "Maple Mono", serif;
+}

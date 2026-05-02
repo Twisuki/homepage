@@ -6,9 +6,9 @@ import { useTheme } from "@/hooks/theme"
 
 export default function ThemeProvider({
   children,
-}: {
+}: Readonly<{
   children: ReactNode
-}) {
+}>) {
   const { theme } = useTheme()
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import ThemeProvider from "@/app/components/theme-provider"
+import "@fontsource/maple-mono"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -18,6 +19,12 @@ export default function RootLayout({
       lang="en"
       className="h-full antialiased"
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://chinese-fonts-cdn.deno.dev/packages/maple-mono-cn/dist/MapleMono-CN-Regular/result.css?display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           {children}
