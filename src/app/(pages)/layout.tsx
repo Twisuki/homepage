@@ -9,14 +9,16 @@ export default function MainLayout({
   children: ReactNode
 }>) {
   return (
-    <div className="h-screen w-screen">
+    <div className="relative h-screen w-screen overflow-hidden text-white/90">
       <Background />
 
-      <Menu />
+      <div className="relative w-full h-full z-100">
+        <Menu />
 
-      <Main>
-        {children}
-      </Main>
+        <Main>
+          {children}
+        </Main>
+      </div>
     </div>
   )
 }
