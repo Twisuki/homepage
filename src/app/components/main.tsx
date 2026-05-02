@@ -3,7 +3,6 @@
 import type { ReactNode } from "react"
 import { IconChevronsDown, IconChevronsUp } from "@tabler/icons-react"
 import { usePathname, useRouter } from "next/navigation"
-import { useMemo } from "react"
 
 export default function Main({
   children,

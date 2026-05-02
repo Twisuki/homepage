@@ -11,7 +11,7 @@ export default function Background() {
         className="object-cover blur-[2px] scale-105"
       />
 
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/30 dark:bg-black/50"></div>
     </div>
   )
 }
