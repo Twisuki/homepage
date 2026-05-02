@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
+import { hasLocale, NextIntlClientProvider } from "next-intl"
+import { notFound } from "next/navigation"
 import ThemeProvider from "@/app/components/theme-provider"
+import { routing } from "@/i18n/routing"
 import "@fontsource/maple-mono"
 import "./globals.css"
 
@@ -9,11 +12,18 @@ export const metadata: Metadata = {
   description: "Twisuki's new homepage.",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: ReactNode
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) {
+    notFound()
+  }
+
   return (
     <html
       lang="en"
@@ -26,9 +36,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

@@ -1,0 +1,14 @@
+{
+  "Menu": {
+    "theme": {
+      "light": "浅色",
+      "dark": "深色",
+      "auto": "自动"
+    },
+    "lang": "切换语言"
+  },
+  "HomePage": {
+    "welcome": "你好, 这里是",
+    "description": "Full-Stack Enthusiast | Frontend Engineer"
+  }
+}

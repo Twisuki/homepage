@@ -1,18 +1,20 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
 export default function Index() {
-  const TITLE = "Full-Stack Enthusiast | Frontend Engineer"
-  const [title, setTitle] = useState("")
+  const t = useTranslations("HomePage")
+  const DESCRIPTION = t("description")
+  const [description, setDescription] = useState("")
 
   useEffect(() => {
     let index = 0
     const interval = setInterval(() => {
-      setTitle(TITLE.slice(0, index))
+      setDescription(DESCRIPTION.slice(0, index))
       index++
-      if (index > TITLE.length)
+      if (index > DESCRIPTION.length)
         clearInterval(interval)
     }, 50)
 
@@ -31,7 +33,7 @@ export default function Index() {
         />
       </div>
       <div className="text-3xl animate-fadeInUp">
-        你好, 这里是
+        {t("welcome")}
         {" "}
         <span className="font-semibold">Twisuki</span>
         {" "}
@@ -40,7 +42,7 @@ export default function Index() {
       <div className="text-xl animate-fadeInUp">
         &lt;
         {" "}
-        {title}
+        {description}
         {" "}
         &gt;
       </div>

@@ -1,0 +1,14 @@
+{
+  "Menu": {
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Auto"
+    },
+    "lang": "Language"
+  },
+  "HomePage": {
+    "welcome": "Hello, this is",
+    "description": "Full-Stack Enthusiast | Frontend Engineer"
+  }
+}

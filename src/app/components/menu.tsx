@@ -2,7 +2,9 @@
 
 import type { ReactNode } from "react"
 import { IconLanguage, IconMoon, IconMoonStars, IconSun, IconSunElectricity } from "@tabler/icons-react"
+import { useLocale, useTranslations } from "next-intl"
 import { useTheme } from "@/hooks/theme"
+import { usePathname, useRouter } from "@/i18n/navigation"
 
 function MenuItem({
   children,
@@ -28,18 +30,30 @@ function MenuItem({
 
 export default function Menu() {
   const { isAuto, isDark, toggleMode } = useTheme()
+  const t = useTranslations("Menu")
+  const locale = useLocale()
+  const pathname = usePathname()
+  const router = useRouter()
 
   const themeLabel = isAuto
-    ? "自动"
-    : isDark ? "深色" : "浅色"
+    ? t("theme.auto")
+    : isDark ? t("theme.dark") : t("theme.light")
 
   const Icon = isAuto
     ? (isDark ? IconMoonStars : IconSunElectricity)
     : (isDark ? IconMoon : IconSun)
 
+  const toggleLocale = () => {
+    const newLocale = locale === "en" ? "zh" : "en"
+    router.replace(pathname, { locale: newLocale })
+  }
+
   return (
     <div className="absolute top-12 right-12 flex flex-col gap-2 z-500">
-      <MenuItem label="语言">
+      <MenuItem
+        label={t("lang")}
+        onClick={toggleLocale}
+      >
         <IconLanguage />
       </MenuItem>
       <MenuItem

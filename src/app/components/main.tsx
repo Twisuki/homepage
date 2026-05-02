@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react"
 import { IconChevronsDown, IconChevronsUp } from "@tabler/icons-react"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter } from "@/i18n/navigation"
 
 export default function Main({
   children,
