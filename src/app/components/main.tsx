@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react"
 import { IconChevronsDown, IconChevronsUp } from "@tabler/icons-react"
+import { useWheel } from "@/hooks/whell"
 import { usePathname, useRouter } from "@/i18n/navigation"
 
 export default function Main({
@@ -27,6 +28,8 @@ export default function Main({
       router.push(PAGE_LIST[index + 1])
     }
   }
+
+  useWheel(handleNavigatePrev, handleNavigateNext, 500)
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
