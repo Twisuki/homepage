@@ -3,6 +3,7 @@
 import type { ReactNode } from "react"
 import { IconLanguage, IconMoon, IconMoonStars, IconSun, IconSunElectricity } from "@tabler/icons-react"
 import { useLocale, useTranslations } from "next-intl"
+import LiquidGlass from "@/app/components/liquid-glass"
 import { useTheme } from "@/hooks/theme"
 import { usePathname, useRouter } from "@/i18n/navigation"
 
@@ -16,15 +17,18 @@ function MenuItem({
   onClick?: () => void
 }>) {
   return (
-    <div
-      className="group relative w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 active:scale-90 active:bg-white/20"
+    <LiquidGlass
+      className="w-12 h-12 rounded-full active:scale-90"
       onClick={onClick}
+      asChild
     >
-      {children}
-      <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
-        {label}
+      <div className="group relative flex items-center justify-center hover:bg-white/20">
+        {children}
+        <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
+          {label}
+        </div>
       </div>
-    </div>
+    </LiquidGlass>
   )
 }
 
