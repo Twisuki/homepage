@@ -23,7 +23,9 @@ function MenuItem({
       asChild
     >
       <div className="group relative flex items-center justify-center hover:bg-white/20">
-        {children}
+        <div>
+          {children}
+        </div>
         <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
           {label}
         </div>
