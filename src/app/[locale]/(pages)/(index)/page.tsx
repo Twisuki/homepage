@@ -3,11 +3,14 @@
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { useAnimate } from "@/hooks/navigate"
+import { cn } from "@/lib/cn"
 
 export default function Index() {
   const t = useTranslations("HomePage")
   const DESCRIPTION = t("description")
   const [description, setDescription] = useState("")
+  const { animateClass } = useAnimate()
 
   useEffect(() => {
     let index = 0
@@ -23,7 +26,7 @@ export default function Index() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <div className="relative w-48 h-48 animate-fadeInUp">
+      <div className={cn("relative w-48 h-48", animateClass)}>
         <Image
           src="/avatar.png"
           alt="avatar"
@@ -32,14 +35,14 @@ export default function Index() {
           className="object-cover rounded-full"
         />
       </div>
-      <div className="text-3xl animate-fadeInUp">
+      <div className={cn("text-3xl", animateClass)}>
         {t("welcome")}
         {" "}
         <span className="font-semibold">Twisuki</span>
         {" "}
         ~
       </div>
-      <div className="text-xl animate-fadeInUp">
+      <div className={cn("text-xl", animateClass)}>
         &lt;
         {" "}
         {description}

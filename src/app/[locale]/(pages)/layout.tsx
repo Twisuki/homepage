@@ -2,6 +2,7 @@ import type { ReactNode } from "react"
 import Background from "@/app/components/background"
 import Main from "@/app/components/main"
 import Menu from "@/app/components/menu"
+import { NavigateProvider } from "@/contexts/navigate"
 
 export default function MainLayout({
   children,
@@ -15,9 +16,11 @@ export default function MainLayout({
       <div className="relative w-full h-full z-100">
         <Menu />
 
-        <Main>
-          {children}
-        </Main>
+        <NavigateProvider>
+          <Main>
+            {children}
+          </Main>
+        </NavigateProvider>
       </div>
     </div>
   )
