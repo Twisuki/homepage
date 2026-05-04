@@ -10,5 +10,21 @@
   "HomePage": {
     "welcome": "Hello, this is",
     "description": "Full-Stack Enthusiast | Frontend Engineer"
+  },
+  "StatePage": {
+    "holiday": {
+      "loading": "Fetching",
+      "failed": "Failed to fetch holiday data, please try again later T_T",
+      "current": {
+        "prefix": "It's ",
+        "suffix": " now, enjoy your holiday!"
+      },
+      "next": {
+        "prefix": "Next: ",
+        "infix": " - ",
+        "suffix": " days"
+      },
+      "end": "No more holidays this year T_T"
+    }
   }
 }

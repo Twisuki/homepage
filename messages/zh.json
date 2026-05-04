@@ -10,5 +10,21 @@
   "HomePage": {
     "welcome": "你好, 这里是",
     "description": "Full-Stack Enthusiast | Frontend Engineer"
+  },
+  "StatePage": {
+    "holiday": {
+      "loading": "获取中",
+      "failed": "获取失败, 请稍后再试 T_T",
+      "current": {
+        "prefix": "现在是 ",
+        "suffix": " , 好好享受假期吧!"
+      },
+      "next": {
+        "prefix": "距离 ",
+        "infix": " 还有 ",
+        "suffix": " 天"
+      },
+      "end": "今年的假日都过完了 T_T"
+    }
   }
 }

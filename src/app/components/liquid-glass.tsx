@@ -75,7 +75,7 @@ export default function LiquidGlass({
   const Comp = asChild ? Slot : "div"
   return (
     <div
-      className={cn("group relative", className)}
+      className={cn("group/liquid-glass relative", className)}
       {...props}
     >
       <div
@@ -87,7 +87,7 @@ export default function LiquidGlass({
       />
       <div className={cn("absolute inset-0 bg-white/25", className)} />
       <div
-        className={cn("absolute inset-0 overflow-hidden ring-inset ring-2 ring-white/50 group-hover:ring-white/80 transition-all duration-200", className)}
+        className={cn("absolute inset-0 overflow-hidden ring-inset ring-2 ring-white/50 group-hover/liquid-glass:ring-white/80 transition-all duration-200", className)}
       />
       <Comp className={cn("absolute inset-0", className)}>
         {children}
