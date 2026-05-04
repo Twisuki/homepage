@@ -35,7 +35,7 @@ function Title({
   const name = SEMESTER_NAMES[semester.type] || semester.type
 
   return (
-    <div className="flex flex-col items-center animate-fadeInUp">
+    <div className="flex flex-col items-center">
       <span className="text-sm">{year}</span>
       <span>{name}</span>
     </div>
@@ -52,7 +52,7 @@ function Progress({
   const label = `[${Math.ceil(passedDays / 7)}/${semester.weeks}]`
 
   return (
-    <div className="w-full flex items-center gap-1 animate-fadeInDown">
+    <div className="w-full flex items-center gap-1">
       <div className="flex-1 h-2 bg-green-700 rounded-full overflow-hidden">
         <div
           className="h-full bg-green-500"
