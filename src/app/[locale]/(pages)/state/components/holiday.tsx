@@ -129,8 +129,12 @@ function HolidayContent() {
 
   return (
     <>
-      <Message holidays={holidays} />
-      <Progress holidays={holidays} />
+      <div className="w-full flex justify-center animate-fadeInUp">
+        <Message holidays={holidays} />
+      </div>
+      <div className="w-full flex justify-center animate-fadeInDown">
+        <Progress holidays={holidays} />
+      </div>
     </>
   )
 }
