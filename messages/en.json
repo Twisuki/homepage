@@ -37,6 +37,10 @@
       "summer1": "Summer Semester",
       "holiday": "Summer Vacation",
       "summer2": "Summer Semester"
+    },
+    "date": {
+      "workday": "Common Busy Day",
+      "weekend": "Not Common Busy Day"
     }
   }
 }

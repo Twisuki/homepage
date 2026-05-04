@@ -37,6 +37,10 @@
       "summer1": "夏季学期",
       "holiday": "暑假",
       "summer2": "夏季学期"
+    },
+    "date": {
+      "workday": "今日有事",
+      "weekend": "今日无事"
     }
   }
 }
