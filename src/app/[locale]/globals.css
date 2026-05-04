@@ -4,5 +4,5 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-	font-family: "Maple Mono CN", "Maple Mono", serif;
+	font-family: "Maple Mono CN", "Maple Mono", "SimHei", serif;
 }
