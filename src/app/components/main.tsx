@@ -12,7 +12,7 @@ export default function Main({
 }>) {
   const { navigatePrev, navigateNext, isFirst, isLast } = useNavigate()
 
-  useWheel(navigatePrev, navigateNext, 500)
+  useWheel(navigatePrev, navigateNext, 200)
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
