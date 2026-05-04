@@ -46,8 +46,14 @@ function Progress({
   const holidaySet = new Set(holidays.map(h => h.name))
   const mergedHolidays = Array.from(holidaySet).map(name => holidays.find(h => h.name === name)).filter(Boolean) as HolidayData[]
 
+  const [isActive, setIsActive] = useState(new Map(mergedHolidays.map(h => [h.name, false])))
+
   const yearStart = dayjs().startOf("year")
   const totalLength = dayjs().endOf("year").diff(yearStart, "day")
+
+  const handleClick = (name: string) => {
+    setIsActive(prev => new Map(prev).set(name, !prev.get(name)))
+  }
 
   return (
     <div className="w-full">
@@ -56,18 +62,26 @@ function Progress({
           <div
             key={h.date}
             className={cn(
-              "group absolute w-6 h-6 top-0 -translate-x-1/2 flex items-center justify-center",
+              "absolute w-6 h-6 top-0 -translate-x-1/2 flex items-center justify-center",
               h.daysLeft > 0 ? "text-white/90" : "text-white/50",
+              { "text-white/90": isActive.get(h.name) },
             )}
             style={{
               left: `${(dayjs(h.date).diff(yearStart, "day") / totalLength) * 100}%`,
             }}
           >
-            <div className="absolute w-max bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-sm opacity-0 group-hover:opacity-100 group-hover:translate-y-full transition-all duration-300">
+            <div className={cn(
+              "absolute w-max bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-sm text-white/90 opacity-0 transition-all duration-300 pointer-events-none",
+              { "opacity-100 translate-y-full": isActive.get(h.name) },
+            )}
+            >
               <span>{h.name}</span>
               <span>{h.date}</span>
             </div>
-            <IconMapPin className="w-6 h-6" />
+            <IconMapPin
+              className="w-6 h-6 cursor-pointer z-500"
+              onClick={() => handleClick(h.name)}
+            />
           </div>
         ))}
       </div>
