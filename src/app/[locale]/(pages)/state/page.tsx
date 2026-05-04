@@ -2,7 +2,7 @@ import Clock from "@/app/[locale]/(pages)/state/components/clock"
 import Date from "@/app/[locale]/(pages)/state/components/date"
 import Hitokoto from "@/app/[locale]/(pages)/state/components/hitokoto"
 import Holiday from "@/app/[locale]/(pages)/state/components/holiday"
-import Progress from "@/app/[locale]/(pages)/state/components/progress"
+import Semester from "@/app/[locale]/(pages)/state/components/semester"
 import Waka from "@/app/[locale]/(pages)/state/components/waka"
 
 export default function State() {
@@ -11,7 +11,7 @@ export default function State() {
       <Hitokoto />
       <Clock />
       <Date />
-      <Progress />
+      <Semester />
       <Waka />
       <Holiday />
     </div>

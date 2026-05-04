@@ -29,6 +29,14 @@
     "waka": {
       "loading": "获取中",
       "failed": "获取失败, 请稍后再试 T_T"
+    },
+    "semester": {
+      "autumn": "秋季学期",
+      "winter": "寒假",
+      "spring": "春季学期",
+      "summer1": "夏季学期",
+      "holiday": "暑假",
+      "summer2": "夏季学期"
     }
   }
 }

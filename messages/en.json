@@ -29,6 +29,14 @@
     "waka": {
       "loading": "Fetching",
       "failed": "Fetch WakaData failed."
+    },
+    "semester": {
+      "autumn": "Autumn Semester",
+      "winter": "Winter Vacation",
+      "spring": "Spring Semester",
+      "summer1": "Summer Semester",
+      "holiday": "Summer Vacation",
+      "summer2": "Summer Semester"
     }
   }
 }
