@@ -85,9 +85,9 @@ export default function LiquidGlass({
           filter: "url(#liquid-glass)",
         }}
       />
-      <div className={cn("absolute inset-0 bg-white/25", className)} />
+      <div className={cn("absolute inset-0 bg-white/25 dark:bg-white/20", className)} />
       <div
-        className={cn("absolute inset-0 overflow-hidden ring-inset ring-2 ring-white/50 group-hover/liquid-glass:ring-white/80 transition-all duration-200", className)}
+        className={cn("absolute inset-0 overflow-hidden ring-inset ring-2 ring-white/50 group-hover/liquid-glass:ring-white/80 dark:ring-white/40 dark:group-hover/liquid-glass:ring-white/60 transition-all duration-200", className)}
       />
       <Comp className={cn("absolute inset-0", className)}>
         {children}
