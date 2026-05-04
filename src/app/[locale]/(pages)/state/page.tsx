@@ -1,9 +1,9 @@
 import Clock from "@/app/[locale]/(pages)/state/components/clock"
-import Code from "@/app/[locale]/(pages)/state/components/code"
 import Date from "@/app/[locale]/(pages)/state/components/date"
 import Hitokoto from "@/app/[locale]/(pages)/state/components/hitokoto"
 import Holiday from "@/app/[locale]/(pages)/state/components/holiday"
 import Progress from "@/app/[locale]/(pages)/state/components/progress"
+import Waka from "@/app/[locale]/(pages)/state/components/waka"
 
 export default function State() {
   return (
@@ -12,7 +12,7 @@ export default function State() {
       <Clock />
       <Date />
       <Progress />
-      <Code />
+      <Waka />
       <Holiday />
     </div>
   )

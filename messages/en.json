@@ -25,6 +25,10 @@
         "suffix": " days"
       },
       "end": "No more holidays this year T_T"
+    },
+    "waka": {
+      "loading": "Fetching",
+      "failed": "Fetch WakaData failed."
     }
   }
 }
