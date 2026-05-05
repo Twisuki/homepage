@@ -18,20 +18,23 @@ function MenuItem({
   onClick?: () => void
 }>) {
   return (
-    <LiquidGlass
-      className="w-12 h-12 rounded-full active:scale-90 animate-bounceIn"
+    <div
+      className="relative w-12 h-12 rounded-full group active:scale-90 animate-bounceIn"
       onClick={onClick}
-      asChild
     >
-      <div className="group relative flex items-center justify-center hover:bg-white/20">
-        <div>
+      <LiquidGlass
+        rounded="full"
+        click
+        className="w-12 h-12"
+      >
+        <div className="w-full h-full flex justify-center items-center">
           {children}
         </div>
-        <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
-          {label}
-        </div>
+      </LiquidGlass>
+      <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
+        {label}
       </div>
-    </LiquidGlass>
+    </div>
   )
 }
 

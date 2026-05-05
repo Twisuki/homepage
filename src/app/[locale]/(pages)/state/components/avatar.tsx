@@ -6,7 +6,9 @@ export default function Avatar() {
     <Base
       x={1}
       y={1}
-      className="rounded-full p-[2px]"
+      rounded
+      hover
+      className="p-[2px]"
     >
       <div className="relative w-full h-full rounded-full">
         <Image

@@ -87,6 +87,7 @@ export default function Semester() {
     <Base
       x={2}
       y={1}
+      hover
       className="flex flex-col items-center justify-center gap-2"
     >
       <Title semester={semester} />

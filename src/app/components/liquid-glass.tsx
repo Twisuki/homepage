@@ -1,99 +1,101 @@
+"use client"
+
 import type { ComponentProps } from "react"
-import { Slot } from "@radix-ui/react-slot"
+import { useState } from "react"
 import { cn } from "@/lib/cn"
 
-// 液态玻璃原设计: @lucasromerodb
-// Liquid Glass Effect for macOS
-// https://github.com/lucasromerodb/liquid-glass-effect-macos
-
-function Root() {
-  return (
-    <svg className="hidden">
-      <filter
-        id="liquid-glass"
-        x="0%"
-        y="0%"
-        width="100%"
-        height="100%"
-        filterUnits="objectBoundingBox"
-      >
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.001 0.005"
-          numOctaves="1"
-          seed="17"
-          result="turbulence"
-        />
-
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-
-        <feSpecularLighting
-          in="softMap"
-          surfaceScale="5"
-          specularConstant="1"
-          specularExponent="100"
-          lightingColor="white"
-          result="specLight"
-        >
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-
-        <feComposite
-          in="specLight"
-          operator="arithmetic"
-          k1="0"
-          k2="1"
-          k3="1"
-          k4="0"
-          result="litImage"
-        />
-
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="softMap"
-          scale="200"
-          xChannelSelector="R"
-          yChannelSelector="G"
-        />
-      </filter>
-    </svg>
-  )
+interface LiquidGlassProps {
+  rounded?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full"
+  edge?: "md" | "lg" | "xl"
+  hover?: boolean
+  click?: boolean
 }
 
 export default function LiquidGlass({
   children,
   className,
-  asChild = false,
+  rounded = "none",
+  edge = "md",
+  hover = false,
+  click = false,
   ...props
-}: Readonly<ComponentProps<"div"> & { asChild?: boolean }>) {
-  const Comp = asChild ? Slot : "div"
+}: Readonly<ComponentProps<"div"> & LiquidGlassProps>) {
+  const ROUNDED_CLASSES: Record<string, string> = {
+    "none": "",
+    "sm": "rounded-sm",
+    "md": "rounded-md",
+    "lg": "rounded-lg",
+    "xl": "rounded-xl",
+    "2xl": "rounded-2xl",
+    "3xl": "rounded-3xl",
+    "full": "rounded-full",
+  }
+
+  const EDGE_VALUES: Record<string, number> = {
+    md: 1,
+    lg: 2,
+    xl: 3,
+  }
+
+  const roundedClass = ROUNDED_CLASSES[rounded] ?? ""
+  const edgeValue = EDGE_VALUES[edge] ?? 1
+
+  const [hovered, setHovered] = useState(false)
+  const [isActived, setIsActived] = useState<boolean>(false)
+
   return (
     <div
-      className={cn("group/liquid-glass relative", className)}
+      className={cn("relative flex overflow-hidden", roundedClass, className)}
+      style={{
+        padding: `${edgeValue}px`,
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onMouseDown={() => setIsActived(true)}
+      onMouseUp={() => setIsActived(false)}
       {...props}
     >
       <div
-        className={cn("absolute inset-0 isolate", className)}
+        className={cn("absolute inset-0 z-1", roundedClass)}
         style={{
-          backdropFilter: "blur(3px)",
-          filter: "url(#liquid-glass)",
+          backdropFilter: "url(#lq)",
+          maskImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="white"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect x="5" y="5" width="calc(100% - 10px)" height="calc(100% - 10px)" rx="21" ry="21" fill="white"/></svg>')`,
+          maskComposite: "exclude",
         }}
       />
-      <div className={cn("absolute inset-0 bg-white/25 dark:bg-white/20", className)} />
+
       <div
-        className={cn("absolute inset-0 overflow-hidden ring-inset ring-2 ring-white/50 group-hover/liquid-glass:ring-white/80 dark:ring-white/40 dark:group-hover/liquid-glass:ring-white/60 transition-all duration-200", className)}
+        className={cn(
+          "absolute inset-0 bg-black/10 z-2",
+          roundedClass,
+          { "bg-transparent": (hover || click) && hovered },
+          { "bg-black/10": click && isActived },
+        )}
+        style={{
+          backdropFilter: "blur(2px)",
+        }}
       />
-      <Comp className={cn("absolute inset-0", className)}>
+
+      <div
+        className={cn("absolute inset-0 z-3", roundedClass)}
+        style={{
+          boxShadow: `inset ${edgeValue}px ${edgeValue}px 0px 0px rgba(255, 255, 255, 0.5), 
+                inset -${edgeValue}px -${edgeValue}px 0px 0px rgba(255, 255, 255, 0.6)`,
+        }}
+      />
+
+      <div
+        className={cn("absolute z-4", roundedClass)}
+        style={{
+          inset: `${edgeValue}px`,
+          boxShadow: `inset ${edgeValue * 2}px ${edgeValue * 2}px ${edgeValue * 3}px ${edgeValue}px rgba(255, 255, 255, 0.2), 
+                inset -${edgeValue * 2}px -${edgeValue * 2}px ${edgeValue * 2}px -1px rgba(255, 255, 255, 0.2)`,
+        }}
+      />
+
+      <div className={cn("w-full h-full z-5", roundedClass)}>
         {children}
-      </Comp>
+      </div>
     </div>
   )
 }
-
-LiquidGlass.Root = Root

@@ -158,6 +158,7 @@ export default function Holiday() {
     <Base
       x={4}
       y={1}
+      hover
       className="flex flex-col items-center justify-center gap-1"
     >
       <HolidayContent />

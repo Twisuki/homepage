@@ -70,6 +70,7 @@ export default function Waka() {
     <Base
       x={2}
       y={1}
+      hover
       className="flex flex-col items-center justify-center gap-2 text-md"
     >
       <WakaContent />

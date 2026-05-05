@@ -10,8 +10,17 @@ export default function Base({
   className,
   x = 1,
   y = 1,
+  rounded = false,
+  hover = false,
+  click = false,
   ...props
-}: Readonly<ComponentProps<"div"> & { x?: number, y?: number }>) {
+}: Readonly<ComponentProps<"div"> & {
+  x?: number
+  y?: number
+  rounded?: boolean
+  hover?: boolean
+  click?: boolean
+}>) {
   if (x < 1 || x > 6 || y < 1 || y > 4) {
     throw new Error("Invalid span values")
   }
@@ -26,10 +35,20 @@ export default function Base({
 
   return (
     <LiquidGlass
-      className={cn("rounded-2xl p-4", className, colSpanClass, rowSpanClass, animateClass)}
+      rounded={rounded ? "full" : "2xl"}
+      hover={hover}
+      click={click}
+      className={cn(colSpanClass, rowSpanClass, animateClass)}
       {...props}
     >
-      {children}
+      <div className={cn(
+        "w-full h-full p-4",
+        className,
+        { "rounded-full": rounded },
+      )}
+      >
+        {children}
+      </div>
     </LiquidGlass>
   )
 }

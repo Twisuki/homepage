@@ -8,7 +8,7 @@ export default function Background() {
         alt="background"
         fill
         priority
-        className="object-cover blur-[2px] scale-105"
+        className="object-cover"
       />
 
       <div className="absolute inset-0 bg-black/30 dark:bg-black/50"></div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
-import LiquidGlass from "@/app/components/liquid-glass"
+import LiquidGlassRoot from "@/app/components/liquid-glass-root"
 import ThemeProvider from "@/app/components/theme-provider"
 import { routing } from "@/i18n/routing"
 import "@fontsource/maple-mono"
@@ -39,7 +39,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>
-            <LiquidGlass.Root />
+            <LiquidGlassRoot />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>

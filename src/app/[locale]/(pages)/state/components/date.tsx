@@ -82,6 +82,7 @@ export default function Date() {
     <Base
       x={2}
       y={2}
+      hover
       className="flex flex-col justify-center items-center gap-2 text-sm"
     >
       <Calendar />
