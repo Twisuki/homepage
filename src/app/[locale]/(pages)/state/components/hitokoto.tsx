@@ -73,7 +73,7 @@ export default function Hitokoto() {
     <Base
       x={5}
       y={1}
-      click
+      click={status === "printed"}
       className="flex flex-col items-center justify-center gap-1"
       onClick={handleClick}
     >
