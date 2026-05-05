@@ -56,7 +56,7 @@ function Progress({
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full px-2">
       <div className="relative w-full h-6">
         {mergedHolidays.map(h => (
           <div
@@ -76,7 +76,6 @@ function Progress({
             )}
             >
               <span>{h.name}</span>
-              <span>{h.date}</span>
             </div>
             <IconMapPin
               className="w-6 h-6 cursor-pointer z-500"
