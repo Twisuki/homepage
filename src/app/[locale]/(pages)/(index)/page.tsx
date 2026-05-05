@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import LiquidGlass from "@/app/components/liquid-glass"
 import { useAnimate } from "@/hooks/navigate"
 import { cn } from "@/lib/cn"
 
@@ -13,15 +14,18 @@ export default function Index() {
   const { animateClass } = useAnimate()
 
   useEffect(() => {
-    let index = 0
-    const interval = setInterval(() => {
-      setDescription(DESCRIPTION.slice(0, index))
-      index++
-      if (index > DESCRIPTION.length)
-        clearInterval(interval)
-    }, 50)
+    const timer = setTimeout(() => {
+      let index = 0
+      const interval = setInterval(() => {
+        setDescription(DESCRIPTION.slice(0, index))
+        index++
+        if (index > DESCRIPTION.length)
+          clearInterval(interval)
+      }, 50)
 
-    return () => clearInterval(interval)
+      return () => clearInterval(interval)
+    }, 200)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -42,13 +46,19 @@ export default function Index() {
         {" "}
         ~
       </div>
-      <div className={cn("text-xl", animateClass)}>
-        &lt;
-        {" "}
-        {description}
-        {" "}
-        &gt;
-      </div>
+      <LiquidGlass
+        rounded="full"
+        hover
+        className={cn("text-xl", animateClass)}
+      >
+        <div className="w-full px-2 py-1">
+          &lt;
+          {" "}
+          {description}
+          {" "}
+          &gt;
+        </div>
+      </LiquidGlass>
     </div>
   )
 }
