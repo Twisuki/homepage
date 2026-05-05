@@ -1,6 +1,6 @@
 import { load } from "cheerio"
 
-export interface WakaInfo {
+export interface WakaData {
   time: string
   lines: string
 }
@@ -49,7 +49,7 @@ export async function GET() {
       }
     })
 
-    const response: WakaInfo = {
+    const response: WakaData = {
       time: time || "",
       lines: lines || "",
     }

@@ -1,6 +1,6 @@
 "use client"
 
-import type { WakaInfo } from "@/app/api/waka/route"
+import type { WakaData } from "@/app/api/waka/route"
 import { IconCode, IconLoader2, IconPencilCode } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
@@ -9,7 +9,7 @@ import Base from "@/app/[locale]/(pages)/state/components/base"
 function WakaContent() {
   const t = useTranslations("StatePage.waka")
 
-  const [waka, setWaka] = useState<WakaInfo | null>(null)
+  const [waka, setWaka] = useState<WakaData | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isFailed, setIsFailed] = useState(false)
 
@@ -17,7 +17,7 @@ function WakaContent() {
     setIsLoading(true)
     try {
       const response = await fetch("/api/waka")
-      const data: WakaInfo = await response.json()
+      const data: WakaData = await response.json()
       setWaka(data)
     }
     catch (error) {

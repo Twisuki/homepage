@@ -43,5 +43,12 @@
       "workday": "Common Busy Day",
       "weekend": "Not Common Busy Day"
     }
+  },
+  "BlogPage": {
+    "loading": "Loading ...",
+    "failed1": "Load failed",
+    "failed2": "Failed to load blog data T_T",
+    "site": "Blog Site",
+    "link": "Go Read"
   }
 }

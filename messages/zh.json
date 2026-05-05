@@ -43,5 +43,12 @@
       "workday": "今日有事",
       "weekend": "今日无事"
     }
+  },
+  "BlogPage": {
+    "loading": "加载中 ...",
+    "failed1": "加载失败",
+    "failed2": "加载失败 T_T",
+    "site": "Blog 主站",
+    "link": "前往阅读"
   }
 }

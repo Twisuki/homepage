@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn"
 interface LiquidGlassProps {
   rounded?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full"
   edge?: "md" | "lg" | "xl"
+  lighted?: boolean
   hover?: boolean
   click?: boolean
 }
@@ -16,6 +17,7 @@ export default function LiquidGlass({
   className,
   rounded = "none",
   edge = "md",
+  lighted = false,
   hover = false,
   click = false,
   ...props
@@ -68,7 +70,7 @@ export default function LiquidGlass({
         className={cn(
           "absolute inset-0 bg-black/10 z-2",
           roundedClass,
-          { "bg-transparent": (hover || click) && hovered },
+          { "bg-transparent": ((hover || click) && hovered) || lighted },
           { "bg-black/10": click && isActived },
         )}
         style={{

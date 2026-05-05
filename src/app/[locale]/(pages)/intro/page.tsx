@@ -76,6 +76,7 @@ export default function Intro() {
           </div>
         </div>
       </LiquidGlass>
+
       <div className="h-96 flex flex-col gap-4">
         <LiquidGlass
           rounded="3xl"
@@ -86,6 +87,7 @@ export default function Intro() {
             <IconLoader2 className="animate-spin" />
           </div>
         </LiquidGlass>
+
         <LiquidGlass
           rounded="3xl"
           className={cn("w-96 flex-1", animateClass)}
