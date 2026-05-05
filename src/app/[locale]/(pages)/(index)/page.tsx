@@ -30,15 +30,21 @@ export default function Index() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <div className={cn("relative w-48 h-48", animateClass)}>
-        <Image
-          src="/avatar.png"
-          alt="avatar"
-          fill
-          priority
-          className="object-cover rounded-full"
-        />
-      </div>
+      <LiquidGlass
+        rounded="full"
+        edge="lg"
+        className={cn("w-48 h-48", animateClass)}
+      >
+        <div className="relative w-full h-full">
+          <Image
+            src="/avatar.png"
+            alt="avatar"
+            fill
+            priority
+            className="object-cover rounded-full"
+          />
+        </div>
+      </LiquidGlass>
       <div className={cn("text-3xl", animateClass)}>
         {t("welcome")}
         {" "}
