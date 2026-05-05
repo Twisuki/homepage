@@ -1,9 +1,10 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { IconLanguage, IconMoon, IconMoonStars, IconSun, IconSunElectricity } from "@tabler/icons-react"
+import { IconLanguage, IconLoader2, IconMoon, IconMoonStars, IconSun, IconSunElectricity } from "@tabler/icons-react"
 import { useLocale, useTranslations } from "next-intl"
 import LiquidGlass from "@/app/components/liquid-glass"
+import { useMounted } from "@/hooks/mounted"
 import { useTheme } from "@/hooks/theme"
 import { usePathname, useRouter } from "@/i18n/navigation"
 
@@ -18,7 +19,7 @@ function MenuItem({
 }>) {
   return (
     <LiquidGlass
-      className="w-12 h-12 rounded-full active:scale-90"
+      className="w-12 h-12 rounded-full active:scale-90 animate-bounceIn"
       onClick={onClick}
       asChild
     >
@@ -36,6 +37,7 @@ function MenuItem({
 
 export default function Menu() {
   const { isAuto, isDark, toggleMode } = useTheme()
+  const { mounted } = useMounted()
   const t = useTranslations("Menu")
   const locale = useLocale()
   const pathname = usePathname()
@@ -45,7 +47,7 @@ export default function Menu() {
     ? t("theme.auto")
     : isDark ? t("theme.dark") : t("theme.light")
 
-  const Icon = isAuto
+  const ThemeIcon = isAuto
     ? (isDark ? IconMoonStars : IconSunElectricity)
     : (isDark ? IconMoon : IconSun)
 
@@ -62,12 +64,20 @@ export default function Menu() {
       >
         <IconLanguage />
       </MenuItem>
-      <MenuItem
-        label={themeLabel}
-        onClick={toggleMode}
-      >
-        <Icon />
-      </MenuItem>
+      {mounted
+        ? (
+            <MenuItem
+              label={themeLabel}
+              onClick={toggleMode}
+            >
+              <ThemeIcon />
+            </MenuItem>
+          )
+        : (
+            <MenuItem label={t("theme.loading")}>
+              <IconLoader2 className="animate-twSpin" />
+            </MenuItem>
+          )}
     </div>
   )
 }

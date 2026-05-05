@@ -1,6 +1,7 @@
 {
   "Menu": {
     "theme": {
+      "loading": "加载中...",
       "light": "浅色",
       "dark": "深色",
       "auto": "自动"

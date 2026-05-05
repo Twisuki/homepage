@@ -1,6 +1,7 @@
 {
   "Menu": {
     "theme": {
+      "loading": "Loading...",
       "light": "Light",
       "dark": "Dark",
       "auto": "Auto"
