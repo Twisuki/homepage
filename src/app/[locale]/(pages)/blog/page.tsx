@@ -4,6 +4,7 @@ import type { BlogData } from "@/app/api/blog/route"
 import { IconArrowRight, IconLoader2, IconPlayerPlay, IconPlayerPlayFilled, IconTag } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
+import Button from "@/app/components/button"
 import LiquidGlass from "@/app/components/liquid-glass"
 import { useAnimate } from "@/hooks/navigate"
 import { cn } from "@/lib/cn"
@@ -90,16 +91,14 @@ export default function Blog() {
                   ))}
 
                   <div className="w-full flex-1 flex items-end justify-center gap-4">
-                    <LiquidGlass
-                      rounded="full"
-                      click
-                      className="w-full h-8 active:scale-90 animate-fadeIn"
-                      onClick={() => window.open("https://blog.twis.uk", "_blank")}
+                    <Button
+                      className="w-full h-8"
+                      to="https://blog.twis.uk"
                     >
                       <div className="w-full h-full flex items-center justify-center">
                         {t("site")}
                       </div>
-                    </LiquidGlass>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -137,17 +136,15 @@ export default function Blog() {
                           ))}
                         </div>
                         <div className="w-full flex items-center justify-end">
-                          <LiquidGlass
-                            rounded="full"
-                            click
-                            className="w-32 h-8 active:scale-90 group animate-bounceIn"
-                            onClick={() => window.open(activeBlog.url, "_blank")}
+                          <Button
+                            className="w-32 h-8 group"
+                            to={activeBlog.url}
                           >
                             <div className="w-full h-full flex items-center justify-center text-sm">
                               {t("link")}
                               <IconArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-all duration-200" />
                             </div>
-                          </LiquidGlass>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -164,14 +161,11 @@ export default function Blog() {
                 ? (<div className="w-full h-full flex items-center justify-center">{t("failed2")}</div>)
                 : (
                     <div className="w-full h-full p-2 flex items-center gap-2">
-                      <LiquidGlass
-                        rounded="full"
-                        className="w-8 h-8 animate-bounceIn"
-                      >
+                      <Button className="w-8 h-8">
                         <div className="w-full h-full flex items-center justify-center">
                           <IconTag />
                         </div>
-                      </LiquidGlass>
+                      </Button>
                       <div className="text-sm animate-fadeIn">
                         {activeBlog.tags.join(", ")}
                       </div>

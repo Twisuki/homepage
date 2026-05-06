@@ -1,36 +1,11 @@
 "use client"
 
-import type { ReactNode } from "react"
 import { IconBrandGithub, IconBrandX, IconLoader2 } from "@tabler/icons-react"
 import Image from "next/image"
+import Button from "@/app/components/button"
 import LiquidGlass from "@/app/components/liquid-glass"
 import { useAnimate } from "@/hooks/navigate"
 import { cn } from "@/lib/cn"
-
-function Button({
-  children,
-  to,
-}: Readonly<{
-  children: ReactNode
-  to: string
-}>) {
-  const handleClick = () => {
-    window.open(to, "_blank")
-  }
-
-  return (
-    <LiquidGlass
-      rounded="full"
-      click
-      onClick={handleClick}
-      className="w-10 h-10 active:scale-90"
-    >
-      <div className="w-full h-full flex justify-center items-center">
-        {children}
-      </div>
-    </LiquidGlass>
-  )
-}
 
 export default function Intro() {
   const { animateClass } = useAnimate()
@@ -57,11 +32,21 @@ export default function Intro() {
             </div>
 
             <div className="flex w-full gap-2">
-              <Button to="https://github.com/Twisuki">
-                <IconBrandGithub />
+              <Button
+                className="w-10 h-10"
+                to="https://github.com/Twisuki"
+              >
+                <div className="w-full h-full flex justify-center items-center">
+                  <IconBrandGithub />
+                </div>
               </Button>
-              <Button to="https://x.com/suyang_233">
-                <IconBrandX />
+              <Button
+                className="w-10 h-10"
+                to="https://x.com/suyang_233"
+              >
+                <div className="w-full h-full flex justify-center items-center">
+                  <IconBrandX />
+                </div>
               </Button>
             </div>
           </div>
