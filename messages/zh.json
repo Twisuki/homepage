@@ -42,6 +42,9 @@
     "date": {
       "workday": "今日有事",
       "weekend": "今日无事"
+    },
+    "hitokoto": {
+      "failed": "获取失败 T_T"
     }
   },
   "BlogPage": {

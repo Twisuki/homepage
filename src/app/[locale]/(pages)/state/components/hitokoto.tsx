@@ -2,13 +2,16 @@
 
 import type { HitokotoData } from "@/app/api/hitokoto/route"
 import { IconChevronsLeft, IconChevronsRight } from "@tabler/icons-react"
+import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { cn } from "@/lib/cn"
 
-type HitokotoStatus = "init" | "printing" | "printed" | "deleting"
+type HitokotoStatus = "init" | "printing" | "printed" | "deleting" | "failed"
 
 export default function Hitokoto() {
+  const t = useTranslations("StatePage.hitokoto")
+
   const [data, setData] = useState<HitokotoData | null>(null)
   const [hitokoto, setHitokoto] = useState("")
   const [from, setFrom] = useState("")
@@ -22,6 +25,7 @@ export default function Hitokoto() {
       setStatus("printing")
     }
     catch (error) {
+      setStatus("failed")
       console.error("Failed to fetch hitokoto:", error)
     }
   }
@@ -81,23 +85,29 @@ export default function Hitokoto() {
       )}
       onClick={handleClick}
     >
-      <div className="flex items-center justify-center">
-        <IconChevronsLeft />
-        {hitokoto}
-        <IconChevronsRight />
-      </div>
-      <div className="w-full h-4">
-        <div className={cn(
-          "w-full flex px-2 justify-end",
-          { "animate-fadeInUp": status === "printing" && from },
-          { "animate-fadeOutDown": status === "deleting" },
-        )}
-        >
-          ---
-          {" "}
-          {from}
-        </div>
-      </div>
+      {status === "failed"
+        ? <span>{t("failed")}</span>
+        : (
+            <>
+              <div className="flex items-center justify-center">
+                <IconChevronsLeft />
+                {hitokoto}
+                <IconChevronsRight />
+              </div>
+              <div className="w-full h-4">
+                <div className={cn(
+                  "w-full flex px-2 justify-end",
+                  { "animate-fadeInUp": status === "printing" && from },
+                  { "animate-fadeOutDown": status === "deleting" },
+                )}
+                >
+                  ---
+                  {" "}
+                  {from}
+                </div>
+              </div>
+            </>
+          )}
     </Base>
   )
 }
