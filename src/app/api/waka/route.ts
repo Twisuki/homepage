@@ -50,8 +50,8 @@ export async function GET() {
     })
 
     const response: WakaData = {
-      time: time || "",
-      lines: lines || "",
+      time,
+      lines,
     }
 
     return Response.json(response)
