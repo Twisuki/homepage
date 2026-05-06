@@ -13,20 +13,20 @@ export default function Blog() {
   const { animateClass } = useAnimate()
   const t = useTranslations("BlogPage")
 
-  const [data, setData] = useState<BlogData[]>()
+  const [data, setData] = useState<BlogData[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isFailed, setIsFailed] = useState(false)
   const [index, setIndex] = useState(0)
 
   const blogs = useMemo<BlogData[]>(() => {
-    if (data && data.length > 4) {
+    if (data.length > 4) {
       return data.slice(0, 4)
     }
     return [] as BlogData[]
   }, [data])
 
   const activeBlog = useMemo<BlogData | null>(() => {
-    if (data && data.length > 0 && index < data.length) {
+    if (data.length > 0 && index < data.length) {
       return data[index]
     }
     return null
@@ -37,7 +37,7 @@ export default function Blog() {
 
     try {
       const res = await fetch("/api/blog")
-      const data = await res.json()
+      const data: BlogData[] = await res.json()
       setData(data)
     }
     catch (error) {
