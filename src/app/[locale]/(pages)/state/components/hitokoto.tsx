@@ -77,7 +77,7 @@ export default function Hitokoto() {
       className={cn(
         "flex flex-col items-center justify-center gap-1",
         { "cursor-pointer": status === "printed" },
-        { "cursor-wait": status === "deleting" },
+        { "cursor-wait": status === "deleting" || status === "init" },
       )}
       onClick={handleClick}
     >
