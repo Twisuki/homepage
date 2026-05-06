@@ -50,5 +50,14 @@
     "failed2": "加载失败 T_T",
     "site": "Blog 主站",
     "link": "前往阅读"
+  },
+  "FriendPage": {
+    "loading": "加载中 ...",
+    "failed": "加载失败 T_T",
+    "label": "苏阳的朋友们",
+    "title": "苏阳的个人主页",
+    "url": "https://twis.uk/zh",
+    "avatar": "URL",
+    "description": "欢迎交换友链! 请按照该格式提交发送到我的邮箱 ~"
   }
 }

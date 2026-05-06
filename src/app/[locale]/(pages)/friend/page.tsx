@@ -2,6 +2,7 @@
 
 import type { FriendData } from "@/app/api/friend/route"
 import { IconArrowRight, IconCircleX, IconLoader2 } from "@tabler/icons-react"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useMemo, useRef, useState } from "react"
 import Button from "@/app/components/button"
@@ -16,6 +17,7 @@ type AvatarStatus = "loading" | "loaded" | "error"
 
 export default function friend() {
   const { animateClass } = useAnimate()
+  const t = useTranslations("FriendPage")
 
   const [data, setData] = useState<FriendData[]>([])
   const [friends, setFriends] = useState<FriendData[]>([])
@@ -33,6 +35,7 @@ export default function friend() {
   const jRef = useRef(CIRCLE_SIZE)
 
   const paused = useMemo(() => hovered || current !== null, [hovered, current])
+  const friend = useMemo<FriendData | null>(() => current !== null && friends[current] ? friends[current] : null, [current, friends])
 
   const getFriendData = async () => {
     setIsLoading(true)
@@ -58,7 +61,7 @@ export default function friend() {
     intervalRef.current = setInterval(() => {
       setFriends((prev) => {
         const newFriends = [...prev]
-        newFriends[iRef.current] = data[jRef.current]
+        newFriends[iRef.current % CIRCLE_SIZE] = data[jRef.current % data.length]
         return newFriends
       })
 
@@ -104,15 +107,15 @@ export default function friend() {
 
   useEffect(() => {
     if (data.length === 0) {
-      setFriends([])
+      return
     }
     if (data.length <= CIRCLE_SIZE) {
-      setFriends(data)
+      setFriends(Array.from({ length: CIRCLE_SIZE }).map((_, i) => data[i % data.length]))
     }
     else if (!intervalRef.current) {
       setFriends(data.slice(0, CIRCLE_SIZE))
       iRef.current = CIRCLE_UPDATE_INDEX
-      jRef.current = CIRCLE_SIZE + 1
+      jRef.current = (CIRCLE_SIZE + 1) % data.length
       startInterval()
     }
   }, [data])
@@ -133,9 +136,9 @@ export default function friend() {
     >
       <div className="w-full h-full flex items-center justify-center">
         {isLoading
-          ? "加载中..."
+          ? t("loading")
           : isFailed
-            ? "加载失败"
+            ? t("failed")
             : friends.length > 0 && (
               <>
                 <div
@@ -220,43 +223,52 @@ export default function friend() {
                   className="absolute top-4 right-4 w-96 min-h-48 animate-bounceIn"
                 >
                   <div className="w-full h-full p-4 flex flex-col">
-                    <div>友链</div>
-                    <div className="flex flex-col">
-                      <div>{"{"}</div>
-                      <div className="pl-4">
-                        title:
-                        {" "}
-                        {current && friends[current] ? friends[current].title : "Twisuki HomePage"}
-                      </div>
-                      <div className="pl-4 flex items-center gap-2">
-                        url:
-                        {current && friends[current]
-                          ? (
-                              <Button
-                                to={friends[current].url}
-                              >
-                                <div className="w-6 h-6 flex items-center justify-center">
-                                  <IconArrowRight />
-                                </div>
-                              </Button>
-                            )
-                          : <span>https://twis.uk</span>}
-                      </div>
-                      <div className="pl-4">
-                        avatar:
-                        {" "}
-                        "URL"
-                      </div>
-                      <div className="flex flex-col">
-                        <div className="pl-4">
-                          description:
-                        </div>
-                        <div className="pl-12">
-                          {current && friends[current] ? friends[current].description : "Friends Needed!"}
-                        </div>
-                      </div>
-                      <div>{"} "}</div>
+                    <div>{t("label")}</div>
+                    <div>{"{"}</div>
+                    <div className="pl-4">
+                      title:
+                      {" "}
+                      "
+                      {friend ? friend.title : t("title")}
+                      "
                     </div>
+                    <div className="pl-4 flex items-center gap-2">
+                      url:
+                      {friend
+                        ? (
+                            <Button
+                              to={friend.url}
+                            >
+                              <div className="w-6 h-6 flex items-center justify-center">
+                                <IconArrowRight />
+                              </div>
+                            </Button>
+                          )
+                        : (
+                            <span>
+                              "
+                              {t("url")}
+                              "
+                            </span>
+                          )}
+                    </div>
+                    <div className="pl-4">
+                      avatar:
+                      {" "}
+                      "
+                      {t("avatar")}
+                      "
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="pl-4">
+                        description: "
+                      </div>
+                      <div className="pl-12">
+                        {friend ? friend.description : t("description")}
+                      </div>
+                      <div className="pl-4">"</div>
+                    </div>
+                    <div>{"} "}</div>
                   </div>
                 </LiquidGlass>
               </>

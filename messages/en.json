@@ -50,5 +50,14 @@
     "failed2": "Failed to load blog data T_T",
     "site": "Blog Site",
     "link": "Go Read"
+  },
+  "FriendPage": {
+    "loading": "Loading ...",
+    "failed": "load failed T_T",
+    "label": "Twisuki's Friends",
+    "title": "Twisuki HomePage",
+    "url": "https://twis.uk",
+    "avatar": "URL",
+    "description": "Friends needed! Please submit in this format and send it to my email~"
   }
 }
