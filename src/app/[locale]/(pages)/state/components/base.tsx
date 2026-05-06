@@ -42,7 +42,7 @@ export default function Base({
       {...props}
     >
       <div className={cn(
-        "w-full h-full p-4",
+        "w-full h-full p-4 cursor-default",
         className,
         { "rounded-full": rounded },
       )}

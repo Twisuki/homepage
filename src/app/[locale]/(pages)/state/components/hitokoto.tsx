@@ -74,7 +74,11 @@ export default function Hitokoto() {
       x={5}
       y={1}
       click={status === "printed"}
-      className="flex flex-col items-center justify-center gap-1"
+      className={cn(
+        "flex flex-col items-center justify-center gap-1",
+        { "cursor-pointer": status === "printed" },
+        { "cursor-wait": status === "deleting" },
+      )}
       onClick={handleClick}
     >
       <div className="flex items-center justify-center">

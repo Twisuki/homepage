@@ -11,7 +11,7 @@ export default function Intro() {
   const { animateClass } = useAnimate()
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 cursor-default">
       <LiquidGlass
         rounded="3xl"
         className={cn("w-64 h-96", animateClass)}

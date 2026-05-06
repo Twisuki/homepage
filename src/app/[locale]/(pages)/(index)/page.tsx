@@ -45,7 +45,7 @@ export default function Index() {
           />
         </div>
       </LiquidGlass>
-      <div className={cn("text-3xl", animateClass)}>
+      <div className={cn("text-3xl cursor-default", animateClass)}>
         {t("welcome")}
         {" "}
         <span className="font-semibold">Twisuki</span>
@@ -54,8 +54,7 @@ export default function Index() {
       </div>
       <LiquidGlass
         rounded="full"
-        hover
-        className={cn("text-xl", animateClass)}
+        className={cn("text-xl cursor-default", animateClass)}
       >
         <div className="w-full px-2 py-1">
           &lt;

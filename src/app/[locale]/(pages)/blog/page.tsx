@@ -71,7 +71,7 @@ export default function Blog() {
                       rounded="2xl"
                       hover
                       lighted={index === i}
-                      className="w-full h-16 shrink-0 animate-fadeIn"
+                      className="w-full h-16 shrink-0 animate-fadeIn cursor-pointer"
                       onClick={() => setIndex(i)}
                     >
                       <div className="w-full h-full p-2 flex">
@@ -119,7 +119,7 @@ export default function Blog() {
                 ? (<div className="w-full h-full flex items-center justify-center">{t("failed2")}</div>)
                 : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-full p-4 flex flex-col gap-4">
+                      <div className="w-full p-4 flex flex-col gap-4 cursor-default">
                         <div className="w-full flex flex-col gap-2 animate-fadeIn">
                           <div className="w-full">
                             &lt;
@@ -153,7 +153,7 @@ export default function Blog() {
 
         <LiquidGlass
           rounded="3xl"
-          className={cn("w-96 flex-1", animateClass)}
+          className={cn("w-96 flex-1 cursor-default", animateClass)}
         >
           {isLoading
             ? (<div className="w-full h-full flex items-center justify-center">{t("loading")}</div>)

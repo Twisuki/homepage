@@ -19,7 +19,7 @@ export default function Main({
       {!isFirst && (
         <div className="absolute w-full h-12 top-0 left-0 flex items-center justify-center z-500">
           <IconChevronsUp
-            className="w-8 h-8 animate-twBounce animate-infinite hover:animate-paused"
+            className="w-8 h-8 animate-twBounce animate-infinite hover:animate-paused cursor-pointer"
             onClick={navigatePrev}
           />
         </div>
@@ -29,7 +29,7 @@ export default function Main({
       {!isLast && (
         <div className="absolute w-full h-12 bottom-0 left-0 flex items-center justify-center z-500">
           <IconChevronsDown
-            className="w-8 h-8 animate-twBounce animate-infinite hover:animate-paused"
+            className="w-8 h-8 animate-twBounce animate-infinite hover:animate-paused cursor-pointer"
             onClick={navigateNext}
           />
         </div>
