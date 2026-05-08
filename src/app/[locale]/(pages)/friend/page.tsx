@@ -230,7 +230,7 @@ export default function friend() {
                       {" "}
                       "
                       {friend ? friend.title : t("title")}
-                      "
+                      ",
                     </div>
                     <div className="pl-4 flex items-center gap-2">
                       url:
@@ -251,13 +251,14 @@ export default function friend() {
                               "
                             </span>
                           )}
+                      ,
                     </div>
                     <div className="pl-4">
                       avatar:
                       {" "}
                       "
                       {t("avatar")}
-                      "
+                      ",
                     </div>
                     <div className="flex flex-col">
                       <div className="pl-4">
@@ -266,7 +267,7 @@ export default function friend() {
                       <div className="pl-12">
                         {friend ? friend.description : t("description")}
                       </div>
-                      <div className="pl-4">"</div>
+                      <div className="pl-4">",</div>
                     </div>
                     <div>{"} "}</div>
                   </div>
