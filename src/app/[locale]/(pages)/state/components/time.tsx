@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import LiquidGlass from "@/app/components/liquid-glass"
-import { classList, scheduleList } from "@/data/schedule"
-import { getNowSemester } from "@/lib/semester"
+import { scheduleList } from "@/data/schedule"
+import { getClasses } from "@/lib/schedule"
 
 function Clock({
   hour,
@@ -88,18 +88,8 @@ function Clock({
 }
 
 function getMessage(t: ReturnType<typeof useTranslations>) {
-  const semester = getNowSemester()
-
-  if (!semester) {
-    throw new Error("No semester found for this page")
-  }
-
   const now = dayjs()
-
-  const week = Math.floor(now.diff(semester.startDate, "day") / 7) + 1
-  const day = now.day()
-
-  const classes = classList.filter(item => item.week.includes(week) && item.day === day).toSorted((a, b) => a.schedule[0] - b.schedule[0])
+  const classes = getClasses()
 
   if (classes.length === 0)
     return t("off")

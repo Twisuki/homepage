@@ -14,8 +14,8 @@
   },
   "StatePage": {
     "date": {
-      "workday": "Common Busy Day",
-      "weekend": "Not Common Busy Day"
+      "word": "Common Busy Day",
+      "off": "Not Common Busy Day"
     },
     "hitokoto": {
       "failed": "Failed to fetch Hitokoto T_T"

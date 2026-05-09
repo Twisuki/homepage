@@ -1,6 +1,7 @@
 import type { Dayjs } from "dayjs"
 import dayjs from "dayjs"
 import isBetween from "dayjs/plugin/isBetween"
+import { classList } from "@/data/schedule"
 import { semesterList } from "@/data/semester"
 
 dayjs.extend(isBetween)
@@ -23,4 +24,19 @@ export function getNowSemester() {
   }))
 
   return semesters.find(s => dayjs().isBetween(s.startDate, s.endDate, "day", "[]"))
+}
+
+export function getClasses() {
+  const semester = getNowSemester()
+
+  if (!semester) {
+    throw new Error("No semester found for this page")
+  }
+
+  const now = dayjs()
+
+  const week = Math.floor(now.diff(semester.startDate, "day") / 7) + 1
+  const day = now.day()
+
+  return classList.filter(item => item.week.includes(week) && item.day === day).toSorted((a, b) => a.schedule[0] - b.schedule[0])
 }

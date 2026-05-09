@@ -1,8 +1,8 @@
-import type { SemesterData } from "@/lib/semester"
+import type { SemesterData } from "@/lib/schedule"
 import dayjs from "dayjs"
 import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
-import { getNowSemester } from "@/lib/semester"
+import { getNowSemester } from "@/lib/schedule"
 
 function Title({
   semester,

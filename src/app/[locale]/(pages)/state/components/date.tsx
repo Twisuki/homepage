@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { dateList } from "@/data/date"
 import { cn } from "@/lib/cn"
+import { getClasses } from "@/lib/schedule"
 
 function Calendar() {
   const days: Dayjs[] = []
@@ -62,17 +63,19 @@ function Message() {
     )
   }
 
-  if (dayjs().day() === 0 || dayjs().day() === 6) {
+  const classes = getClasses()
+
+  if (classes.length === 0) {
     return (
       <>
-        {t("weekend")}
+        {t("off")}
       </>
     )
   }
 
   return (
     <>
-      {t("workday")}
+      {t("work")}
     </>
   )
 }
