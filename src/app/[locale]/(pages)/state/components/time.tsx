@@ -1,29 +1,23 @@
 "use client"
 
 import dayjs from "dayjs"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import LiquidGlass from "@/app/components/liquid-glass"
+import { classList, scheduleList } from "@/data/schedule"
+import { getNowSemester } from "@/lib/semester"
 
-function Clock() {
-  const [hour, setHour] = useState(dayjs().hour())
-  const [minute, setMinute] = useState(dayjs().minute())
-  const [second, setSecond] = useState(dayjs().second())
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = dayjs()
-      setHour(now.hour())
-      setMinute(now.minute())
-      setSecond(now.second())
-    }, 500)
-
-    return () => clearInterval(interval)
-  }, [])
-
+function Clock({
+  hour,
+  minute,
+  second,
+}: Readonly<{
+  hour: number
+  minute: number
+  second: number
+}>) {
   return (
     <div className="w-full flex flex-col items-center gap-4">
-
       <div className="w-full aspect-square">
         <LiquidGlass
           rounded="full"
@@ -92,15 +86,68 @@ function Clock() {
   )
 }
 
-function Message() {
-  return (
-    <>
-      大概率在上课
-    </>
-  )
+function getMessage() {
+  const semester = getNowSemester()
+
+  if (!semester) {
+    throw new Error("No semester found for this page")
+  }
+
+  const now = dayjs()
+
+  const week = Math.floor(now.diff(semester.startDate, "day") / 7) + 1
+  const day = now.day()
+
+  const classes = classList.filter(item => item.week.includes(week) && item.day === day).toSorted((a, b) => a.schedule[0] - b.schedule[0])
+
+  if (classes.length === 0)
+    return "今日无课"
+
+  const getTime = (schedules: number[]) => {
+    const startTime = scheduleList[schedules[0]].start
+    const endTime = scheduleList[schedules[schedules.length - 1]].end
+
+    const start = dayjs(startTime, "HH:mm")
+    const end = dayjs(endTime, "HH:mm")
+
+    return { start, end }
+  }
+
+  const { start } = getTime(classes[0].schedule)
+  const { end } = getTime(classes[classes.length - 1].schedule)
+
+  if (now.isBefore(start))
+    return "今天的课还没开始"
+  if (now.isAfter(end))
+    return "今天的课已经结束"
+
+  if (classes.some((item) => {
+    const { start, end } = getTime(item.schedule)
+    return now.isBetween(start, end, "minute", "[]")
+  })) {
+    return "正在上课"
+  }
+  return "下课了"
 }
 
 export default function Time() {
+  const [hour, setHour] = useState(dayjs().hour())
+  const [minute, setMinute] = useState(dayjs().minute())
+  const [second, setSecond] = useState(dayjs().second())
+
+  const message = useMemo(getMessage, [hour, minute])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = dayjs()
+      setHour(now.hour())
+      setMinute(now.minute())
+      setSecond(now.second())
+    }, 500)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <Base
       x={2}
@@ -108,8 +155,8 @@ export default function Time() {
       hover
       className="flex flex-col items-center justify-center gap-2"
     >
-      <Clock />
-      <Message />
+      <Clock hour={hour} minute={minute} second={second} />
+      {message}
     </Base>
   )
 }

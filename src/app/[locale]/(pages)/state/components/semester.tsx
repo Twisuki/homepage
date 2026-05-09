@@ -1,19 +1,8 @@
-import type { Dayjs } from "dayjs"
+import type { SemesterData } from "@/lib/semester"
 import dayjs from "dayjs"
-import isBetween from "dayjs/plugin/isBetween"
 import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
-import { semesterList } from "@/data/semester"
-
-dayjs.extend(isBetween)
-
-interface SemesterData {
-  year: number
-  type: "autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"
-  weeks: number
-  startDate: Dayjs
-  endDate: Dayjs
-}
+import { getNowSemester } from "@/lib/semester"
 
 function Title({
   semester,
@@ -69,15 +58,7 @@ function Progress({
 }
 
 export default function Semester() {
-  const semesters: SemesterData[] = semesterList.map(s => ({
-    year: dayjs(s.startDate).year(),
-    type: s.type,
-    weeks: s.weeks,
-    startDate: dayjs(s.startDate),
-    endDate: dayjs(s.startDate).add(s.weeks * 7, "day"),
-  }))
-
-  const semester = semesters.find(s => dayjs().isBetween(s.startDate, s.endDate, "day", "[]"))
+  const semester = getNowSemester()
 
   if (!semester) {
     throw new Error("No semester found for this page")
