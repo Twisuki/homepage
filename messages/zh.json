@@ -13,6 +13,13 @@
     "description": "Full-Stack Enthusiast | Frontend Engineer"
   },
   "StatePage": {
+    "date": {
+      "workday": "今日有事",
+      "weekend": "今日无事"
+    },
+    "hitokoto": {
+      "failed": "获取失败 T_T"
+    },
     "holiday": {
       "loading": "获取中",
       "failed": "获取失败, 请稍后再试 T_T",
@@ -27,10 +34,6 @@
       },
       "end": "今年的假日都过完了 T_T"
     },
-    "waka": {
-      "loading": "获取中",
-      "failed": "获取失败, 请稍后再试 T_T"
-    },
     "semester": {
       "autumn": "秋季学期",
       "winter": "寒假",
@@ -39,12 +42,16 @@
       "holiday": "暑假",
       "summer2": "夏季学期"
     },
-    "date": {
-      "workday": "今日有事",
-      "weekend": "今日无事"
+    "time": {
+      "off": "今日无课",
+      "before": "今天的课还没开始",
+      "end": "今天的课已结束!",
+      "current": "大概是翘了",
+      "break": "课间休息"
     },
-    "hitokoto": {
-      "failed": "获取失败 T_T"
+    "waka": {
+      "loading": "获取中",
+      "failed": "获取失败, 请稍后再试 T_T"
     }
   },
   "BlogPage": {

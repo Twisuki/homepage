@@ -13,6 +13,13 @@
     "description": "Full-Stack Enthusiast | Frontend Engineer"
   },
   "StatePage": {
+    "date": {
+      "workday": "Common Busy Day",
+      "weekend": "Not Common Busy Day"
+    },
+    "hitokoto": {
+      "failed": "Failed to fetch Hitokoto T_T"
+    },
     "holiday": {
       "loading": "Fetching",
       "failed": "Failed to fetch holiday data, please try again later T_T",
@@ -27,10 +34,6 @@
       },
       "end": "No more holidays this year T_T"
     },
-    "waka": {
-      "loading": "Fetching",
-      "failed": "Fetch WakaData failed."
-    },
     "semester": {
       "autumn": "Autumn Semester",
       "winter": "Winter Vacation",
@@ -39,12 +42,16 @@
       "holiday": "Summer Vacation",
       "summer2": "Summer Semester"
     },
-    "date": {
-      "workday": "Common Busy Day",
-      "weekend": "Not Common Busy Day"
+    "time": {
+      "off": "No class today",
+      "before": "Not started yet",
+      "end": "Class ended!",
+      "current": "Probably skipped ",
+      "break": "Break Time"
     },
-    "hitokoto": {
-      "failed": "Failed to fetch Hitokoto T_T"
+    "waka": {
+      "loading": "Fetching",
+      "failed": "Fetch WakaData failed."
     }
   },
   "BlogPage": {

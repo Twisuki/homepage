@@ -1,6 +1,7 @@
 "use client"
 
 import dayjs from "dayjs"
+import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import LiquidGlass from "@/app/components/liquid-glass"
@@ -86,7 +87,7 @@ function Clock({
   )
 }
 
-function getMessage() {
+function getMessage(t: ReturnType<typeof useTranslations>) {
   const semester = getNowSemester()
 
   if (!semester) {
@@ -101,7 +102,7 @@ function getMessage() {
   const classes = classList.filter(item => item.week.includes(week) && item.day === day).toSorted((a, b) => a.schedule[0] - b.schedule[0])
 
   if (classes.length === 0)
-    return "今日无课"
+    return t("off")
 
   const getTime = (schedules: number[]) => {
     const startTime = scheduleList[schedules[0]].start
@@ -117,25 +118,29 @@ function getMessage() {
   const { end } = getTime(classes[classes.length - 1].schedule)
 
   if (now.isBefore(start))
-    return "今天的课还没开始"
+    return t("before")
   if (now.isAfter(end))
-    return "今天的课已经结束"
+    return t("end")
 
-  if (classes.some((item) => {
+  const current = classes.find((item) => {
     const { start, end } = getTime(item.schedule)
     return now.isBetween(start, end, "minute", "[]")
-  })) {
-    return "正在上课"
+  })
+
+  if (current) {
+    return t("current") + current.name
   }
-  return "下课了"
+  return t("break")
 }
 
 export default function Time() {
+  const t = useTranslations("StatePage.time")
+
   const [hour, setHour] = useState(dayjs().hour())
   const [minute, setMinute] = useState(dayjs().minute())
   const [second, setSecond] = useState(dayjs().second())
 
-  const message = useMemo(getMessage, [hour, minute])
+  const message = useMemo(() => getMessage(t), [hour, minute])
 
   useEffect(() => {
     const interval = setInterval(() => {
