@@ -3,39 +3,48 @@ import { Children, isValidElement } from "react"
 
 const Desktop = ({ children }: Readonly<{ children: ReactNode }>) => <>{children}</>
 const Tablet = ({ children }: Readonly<{ children: ReactNode }>) => <>{children}</>
+const Mobile = ({ children }: Readonly<{ children: ReactNode }>) => <>{children}</>
+
+type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
 
 export default function Responsive({
   children,
-  breakpoint = "md",
+  breakpoint = ["xs", "md"],
 }: Readonly<{
   children: ReactNode
-  breakpoint?: "sm" | "md" | "lg" | "xl"
+  breakpoint?: Array<Breakpoint>
 }>) {
-  const desktopClasses = {
-    sm: "hidden sm:block",
-    md: "hidden md:block",
-    lg: "hidden lg:block",
-    xl: "hidden xl:block",
-  }[breakpoint]
+  const childArray = Children.toArray(children)
+  const hasMobile = childArray.some(child => isValidElement(child) && child.type === Mobile)
 
-  const tabletClasses = {
-    sm: "block sm:hidden",
-    md: "block md:hidden",
-    lg: "block lg:hidden",
-    xl: "block xl:hidden",
-  }[breakpoint]
+  const [breakpoint1, breakpoint2] = breakpoint
+
+  const getClasses = (breakpoint: Breakpoint) => ({
+    xs: { hide: "hidden xs:block", show: "block xs:hidden" },
+    sm: { hide: "hidden sm:block", show: "block sm:hidden" },
+    md: { hide: "hidden md:block", show: "block md:hidden" },
+    lg: { hide: "hidden lg:block", show: "block lg:hidden" },
+    xl: { hide: "hidden xl:block", show: "block xl:hidden" },
+  }[breakpoint])
+
+  const desktopHide = getClasses(breakpoint2).hide
+  const tabletHide = hasMobile ? getClasses(breakpoint1).show : getClasses(breakpoint1).show
+  const mobileHide = getClasses(breakpoint1).hide
 
   return (
     <>
-      {Children.map(children, (child) => {
+      {childArray.map((child, index) => {
         if (!isValidElement(child))
           return null
 
         if (child.type === Desktop) {
-          return <div className={desktopClasses}>{child}</div>
+          return <div key={index} className={desktopHide}>{child}</div>
         }
         if (child.type === Tablet) {
-          return <div className={tabletClasses}>{child}</div>
+          return <div key={index} className={tabletHide}>{child}</div>
+        }
+        if (child.type === Mobile) {
+          return <div key={index} className={mobileHide}>{child}</div>
         }
         return child
       })}
@@ -45,3 +54,4 @@ export default function Responsive({
 
 Responsive.Desktop = Desktop
 Responsive.Tablet = Tablet
+Responsive.Mobile = Mobile

@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+	--breakpoint-xs: 425px;
+}
+
 body {
 	font-family: "Maple Mono CN", "Maple Mono", "SimHei", serif;
 }

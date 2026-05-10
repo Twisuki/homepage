@@ -21,7 +21,7 @@ function MenuItem({
     <div className="relative w-12 h-12 rounded-full group active:scale-90 animate-bounceIn">
       <Button
         onClick={onClick}
-        className="w-12 h-12"
+        className="w-full h-full"
       >
         <div className="w-full h-full flex justify-center items-center">
           {children}
@@ -56,7 +56,7 @@ export default function Menu() {
   }
 
   return (
-    <div className="absolute top-12 right-12 flex flex-col gap-2 z-500">
+    <div className="absolute top-4 right-4 sm:top-8 sm:right-8 md:top-12 md:right-12 flex md:flex-col gap-2 z-500">
       <MenuItem
         label={t("lang")}
         onClick={toggleLocale}

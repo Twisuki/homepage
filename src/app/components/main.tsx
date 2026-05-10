@@ -3,6 +3,7 @@
 import type { ReactNode } from "react"
 import { IconChevronsDown, IconChevronsUp } from "@tabler/icons-react"
 import { useNavigate } from "@/hooks/navigate"
+import { useSwipe } from "@/hooks/swipe"
 import { useWheel } from "@/hooks/whell"
 
 export default function Main({
@@ -13,6 +14,7 @@ export default function Main({
   const { navigatePrev, navigateNext, isFirst, isLast } = useNavigate()
 
   useWheel(navigatePrev, navigateNext, 200)
+  useSwipe(navigatePrev, navigateNext, 50)
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
