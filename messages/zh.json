@@ -13,6 +13,25 @@
     "description1": "Full-Stack Enthusiast",
     "description2": "Frontend Engineer"
   },
+  "IntroPage": {
+    "card1": {
+      "name": "Twisuki",
+      "account": "@suyang233 @Nya_Twisuki"
+    },
+    "card2": {
+      "greeting": "你好, 这里是",
+      "name": " 苏阳 (Twisuki)",
+      "tagline": "Frontend Engineer / Transgender / HNU",
+      "description": "现居长沙, 就读于湖南大学, 是一名正在转全栈的前端工程师",
+      "star": "如果你喜欢我的主页, 不妨来点个 star 谢谢喵 ~",
+      "link": "https://github.com/Twisuki/homepage"
+    },
+    "card3": {
+      "welcome": "欢迎来我的站点留言, 欢迎来和我交朋友",
+      "github": "GitHub: @Twisuki",
+      "email": "Email: suyang233@hotmail.com"
+    }
+  },
   "StatePage": {
     "date": {
       "work": "今日有事",

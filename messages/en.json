@@ -13,6 +13,25 @@
     "description1": "Full-Stack Enthusiast",
     "description2": "Frontend Engineer"
   },
+  "IntroPage": {
+    "card1": {
+      "name": "Twisuki",
+      "account": "@suyang233 @Nya_Twisuki"
+    },
+    "card2": {
+      "greeting": "Hello, this is",
+      "name": " Twisuki",
+      "tagline": "Frontend Engineer / Transgender / HNU",
+      "description": "Come from China, a frontend engineer transitioning to full-stack",
+      "star": "If you like my homepage, feel free to give it a star ~",
+      "link": "https://github.com/Twisuki/homepage"
+    },
+    "card3": {
+      "welcome": "Welcome to leave a message, looking forward to making friends",
+      "github": "GitHub: @Twisuki",
+      "email": "Email: suyang233@hotmail.com"
+    }
+  },
   "StatePage": {
     "date": {
       "word": "Common Busy Day",
