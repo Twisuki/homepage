@@ -25,8 +25,8 @@ function Card1({
   useSwipe(
     null,
     null,
-    () => setIndex(1),
     () => setIndex(0),
+    () => setIndex(1),
   )
 
   return (
