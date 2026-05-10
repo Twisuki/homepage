@@ -26,9 +26,9 @@ function getBreakpoint(width: number): Breakpoint {
 }
 
 function getDeviceType(breakpoint: Breakpoint): DeviceType {
-  if (breakpoint === "xs" || breakpoint === "sm")
+  if (breakpoint === "xs")
     return "mobile"
-  if (breakpoint === "md" || breakpoint === "lg")
+  if (breakpoint === "sm" || breakpoint === "md")
     return "tablet"
   return "desktop"
 }
