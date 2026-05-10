@@ -24,12 +24,12 @@
       "tagline": "Frontend Engineer / Transgender / HNU",
       "description": "现居长沙, 就读于湖南大学, 是一名正在转全栈的前端工程师",
       "star": "如果你喜欢我的主页, 不妨来点个 star 谢谢喵 ~",
-      "link": "https://github.com/Twisuki/homepage"
+      "link": "Twisuki/homepage"
     },
     "card3": {
       "welcome": "欢迎来我的站点留言, 欢迎来和我交朋友",
-      "github": "GitHub: @Twisuki",
-      "email": "Email: suyang233@hotmail.com"
+      "github": "@Twisuki",
+      "email": "suyang233@hotmail.com"
     }
   },
   "StatePage": {

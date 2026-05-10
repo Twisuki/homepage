@@ -24,12 +24,12 @@
       "tagline": "Frontend Engineer / Transgender / HNU",
       "description": "Come from China, a frontend engineer transitioning to full-stack",
       "star": "If you like my homepage, feel free to give it a star ~",
-      "link": "https://github.com/Twisuki/homepage"
+      "link": "Twisuki/homepage"
     },
     "card3": {
       "welcome": "Welcome to leave a message, looking forward to making friends",
-      "github": "GitHub: @Twisuki",
-      "email": "Email: suyang233@hotmail.com"
+      "github": "@Twisuki",
+      "email": "suyang233@hotmail.com"
     }
   },
   "StatePage": {

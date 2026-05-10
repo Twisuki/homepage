@@ -14,7 +14,7 @@ export default function Main({
   const { navigatePrev, navigateNext, isFirst, isLast } = useNavigate()
 
   useWheel(navigatePrev, navigateNext, 200)
-  useSwipe(navigatePrev, navigateNext, 50)
+  useSwipe(navigatePrev, navigateNext, null, null, 50)
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
