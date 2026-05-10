@@ -21,13 +21,13 @@ function MenuItem({
     <div className="relative w-12 h-12 rounded-full group active:scale-90 animate-bounceIn">
       <Button
         onClick={onClick}
-        className="w-full h-full"
+        className="w-full h-full z-200"
       >
         <div className="w-full h-full flex justify-center items-center">
           {children}
         </div>
       </Button>
-      <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200">
+      <div className="absolute -left-4 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap select-none opacity-0 group-hover:-translate-x-full group-hover:opacity-100 transition-all duration-200 z-100">
         {label}
       </div>
     </div>
