@@ -10,7 +10,8 @@
   },
   "HomePage": {
     "welcome": "你好, 这里是",
-    "description": "Full-Stack Enthusiast | Frontend Engineer"
+    "description1": "Full-Stack Enthusiast",
+    "description2": "Frontend Engineer"
   },
   "StatePage": {
     "date": {
