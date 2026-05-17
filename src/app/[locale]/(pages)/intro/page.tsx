@@ -20,6 +20,7 @@ function Card1({
   animateClass: string
   t: ReturnType<typeof useTranslations>
 }>) {
+  const { mounted } = useMounted()
   const [index, setIndex] = useState(0)
 
   useSwipe(
@@ -49,31 +50,33 @@ function Card1({
             <span className="text-xs sm:text-sm">{t("card1.account")}</span>
           </div>
 
-          <Responsive>
-            <Responsive.Mobile>
-              <div className="w-full h-36">
-                {index === 0
-                  ? <Card2 animateClass="" t={t} />
-                  : <Card3 animateClass="" t={t} />}
-              </div>
-              <div className="w-full h-1 flex items-center justify-center gap-1">
-                <div
-                  className={cn(
-                    "w-1 h-1 rounded-full",
-                    index === 0 ? "bg-white" : "bg-gray-500",
-                  )}
-                  onClick={() => setIndex(0)}
-                />
-                <div
-                  className={cn(
-                    "w-1 h-1 rounded-full",
-                    index === 1 ? "bg-white" : "bg-gray-500",
-                  )}
-                  onClick={() => setIndex(1)}
-                />
-              </div>
-            </Responsive.Mobile>
-          </Responsive>
+          {mounted && (
+            <Responsive>
+              <Responsive.Mobile>
+                <div className="w-full h-36">
+                  {index === 0
+                    ? <Card2 animateClass="" t={t} />
+                    : <Card3 animateClass="" t={t} />}
+                </div>
+                <div className="w-full h-1 flex items-center justify-center gap-1">
+                  <div
+                    className={cn(
+                      "w-1 h-1 rounded-full",
+                      index === 0 ? "bg-white" : "bg-gray-500",
+                    )}
+                    onClick={() => setIndex(0)}
+                  />
+                  <div
+                    className={cn(
+                      "w-1 h-1 rounded-full",
+                      index === 1 ? "bg-white" : "bg-gray-500",
+                    )}
+                    onClick={() => setIndex(1)}
+                  />
+                </div>
+              </Responsive.Mobile>
+            </Responsive>
+          )}
 
           <div className="flex w-full gap-2">
             <Button
