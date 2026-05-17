@@ -1,3 +1,5 @@
+"use client"
+
 import type { ReactNode } from "react"
 import { Children, isValidElement } from "react"
 import { useBreakpoint } from "@/hooks/breakpoint"
