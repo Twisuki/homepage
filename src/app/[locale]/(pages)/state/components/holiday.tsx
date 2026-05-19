@@ -2,11 +2,11 @@
 
 import type { HolidayData } from "@/app/api/holiday/route"
 import { IconLoader2, IconMapPin } from "@tabler/icons-react"
-import dayjs from "dayjs"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { cn } from "@/lib/cn"
+import dayjs from "@/lib/dayjs"
 
 function Message({
   holidays,

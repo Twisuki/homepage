@@ -1,9 +1,9 @@
-import type { Dayjs } from "dayjs"
-import dayjs from "dayjs"
+import type { Dayjs } from "@/lib/dayjs"
 import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { dateList } from "@/data/date"
 import { cn } from "@/lib/cn"
+import dayjs from "@/lib/dayjs"
 import { getClasses } from "@/lib/schedule"
 
 function Calendar() {

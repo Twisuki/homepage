@@ -1,4 +1,4 @@
-import dayjs from "dayjs"
+import dayjs from "@/lib/dayjs"
 
 interface HolidayItem {
   holiday: true

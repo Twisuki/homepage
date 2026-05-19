@@ -1,11 +1,11 @@
 "use client"
 
-import dayjs from "dayjs"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import LiquidGlass from "@/app/components/liquid-glass"
 import { scheduleList } from "@/data/schedule"
+import dayjs from "@/lib/dayjs"
 import { getClasses } from "@/lib/schedule"
 
 function Clock({

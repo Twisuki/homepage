@@ -1,5 +1,5 @@
 import { load } from "cheerio"
-import dayjs from "dayjs"
+import dayjs from "@/lib/dayjs"
 
 export interface BlogData {
   title: string

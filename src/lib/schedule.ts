@@ -1,10 +1,7 @@
-import type { Dayjs } from "dayjs"
-import dayjs from "dayjs"
-import isBetween from "dayjs/plugin/isBetween"
+import type { Dayjs } from "@/lib/dayjs"
 import { classList } from "@/data/schedule"
 import { semesterList } from "@/data/semester"
-
-dayjs.extend(isBetween)
+import dayjs from "@/lib/dayjs"
 
 export interface SemesterData {
   year: number

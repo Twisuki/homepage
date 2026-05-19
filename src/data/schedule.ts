@@ -67,7 +67,7 @@ export const classList: ClassItem[] = [
     location: "C2 104",
     week: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     day: 2,
-    schedule: [5, 6, 7, 8],
+    schedule: [5, 6, 7],
   },
   {
     name: "控制原理",
