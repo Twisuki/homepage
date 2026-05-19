@@ -8,12 +8,13 @@ import Semester from "@/app/[locale]/(pages)/state/components/semester"
 import Time from "@/app/[locale]/(pages)/state/components/time"
 import Waka from "@/app/[locale]/(pages)/state/components/waka"
 import Responsive from "@/app/components/responsive"
+import { useMounted } from "@/hooks/mounted"
 
 function MobileContent() {
   return (
-    <>
+    <div className="w-64 h-96">
       移动端适配开发中...
-    </>
+    </div>
   )
 }
 
@@ -32,17 +33,23 @@ function DesktopContent() {
 }
 
 export default function State() {
+  const { mounted } = useMounted()
+
   return (
-    <Responsive>
-      <Responsive.Desktop>
-        <DesktopContent />
-      </Responsive.Desktop>
-      <Responsive.Tablet>
-        <DesktopContent />
-      </Responsive.Tablet>
-      <Responsive.Mobile>
-        <MobileContent />
-      </Responsive.Mobile>
-    </Responsive>
+    <div>
+      {mounted && (
+        <Responsive>
+          <Responsive.Desktop>
+            <DesktopContent />
+          </Responsive.Desktop>
+          <Responsive.Tablet>
+            <DesktopContent />
+          </Responsive.Tablet>
+          <Responsive.Mobile>
+            <MobileContent />
+          </Responsive.Mobile>
+        </Responsive>
+      )}
+    </div>
   )
 }
