@@ -10,7 +10,7 @@ export default function MainLayout({
   children: ReactNode
 }>) {
   return (
-    <div className="relative h-screen w-screen overflow-hidden text-white/90">
+    <div className="relative h-dvh w-screen overflow-hidden text-white/90">
       <Background />
 
       <div className="relative w-full h-full z-100">
