@@ -31,13 +31,9 @@ export default function Base({
   const { isMobile } = useBreakpoint()
   const { animateClass } = useAnimate()
 
-  const widthClasses = ["w-16", "w-32", "w-48", "w-64", "w-80", "w-96"]
-  const heightClasses = ["h-16", "h-32", "h-48", "h-64"]
-  const colSpanClasses = ["sm:col-span-1", "sm:col-span-2", "sm:col-span-3", "sm:col-span-4", "sm:col-span-5", "sm:col-span-6"]
-  const rowSpanClasses = ["sm:row-span-1", "sm:row-span-2", "sm:row-span-3", "sm:row-span-4"]
+  const colSpanClasses = ["col-span-1", "col-span-2", "col-span-3", "col-span-4", "col-span-5", "col-span-6"]
+  const rowSpanClasses = ["row-span-1", "row-span-2", "row-span-3", "row-span-4"]
 
-  const widthClass = widthClasses[x - 1]
-  const heightClass = heightClasses[y - 1]
   const colSpanClass = colSpanClasses[x - 1]
   const rowSpanClass = rowSpanClasses[y - 1]
 
@@ -50,9 +46,6 @@ export default function Base({
       hover={hover}
       click={click}
       className={cn(
-        widthClass,
-        heightClass,
-        "sm:w-auto sm:h-auto",
         colSpanClass,
         rowSpanClass,
         !isMobile ? animateClass : "",

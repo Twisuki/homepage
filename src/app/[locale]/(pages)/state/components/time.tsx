@@ -151,7 +151,9 @@ export default function Time() {
       className="flex flex-col items-center justify-center gap-2"
     >
       <Clock hour={hour} minute={minute} second={second} />
-      {message}
+      <div className="w-full text-center">
+        {message}
+      </div>
     </Base>
   )
 }
