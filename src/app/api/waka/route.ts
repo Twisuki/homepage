@@ -35,10 +35,11 @@ export async function GET() {
         return
 
       // 解析时间
-      const timeRegex = /Code Time-(\d+) hrs (\d+) mins-blue/
+      const timeRegex = /Code Time-(\d+(?:%2C\d+)?)\s*hrs\s*(\d+)\s*mins-blue/
       const timeMatch = src.match(timeRegex)
       if (timeMatch && timeMatch[1] && timeMatch[2]) {
-        time = `${timeMatch[1]}h ${timeMatch[2]}min`
+        const hours = timeMatch[1].replace(/%2C/g, "")
+        time = `${hours}h ${timeMatch[2]}min`
       }
 
       // 解析代码行数
