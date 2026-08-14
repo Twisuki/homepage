@@ -37,7 +37,7 @@ export default function ContactCard({
           {t("card3.github")}
         </div>
         <div className="w-full flex items-center gap-1 text-xs sm:text-sm">
-          <Button to="mailto://suyang233@hotmail.com">
+          <Button to="mailto://hi@twis.uk">
             <div className="w-full h-full p-1">
               <IconMail className="w-4 h-4" />
             </div>
