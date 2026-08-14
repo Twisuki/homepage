@@ -126,18 +126,14 @@ function getMessage(t: ReturnType<typeof useTranslations>) {
 export default function Time() {
   const t = useTranslations("StatePage.time")
 
-  const [hour, setHour] = useState(od().hour)
-  const [minute, setMinute] = useState(od().minute)
-  const [second, setSecond] = useState(od().second)
+  const [now, setNow] = useState(od().s)
+  const time = od(now)
 
-  const message = useMemo(() => getMessage(t), [hour, minute])
+  const message = useMemo(() => getMessage(t), [time.hour, time.minute])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = od()
-      setHour(now.hour)
-      setMinute(now.minute)
-      setSecond(now.second)
+      setNow(od().s)
     }, 500)
 
     return () => clearInterval(interval)
@@ -150,7 +146,7 @@ export default function Time() {
       hover
       className="flex flex-col items-center justify-center gap-2"
     >
-      <Clock hour={hour} minute={minute} second={second} />
+      <Clock hour={time.hour} minute={time.minute} second={time.second} />
       <div className="w-full text-center">
         {message}
       </div>
