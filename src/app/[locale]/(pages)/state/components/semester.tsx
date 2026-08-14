@@ -1,7 +1,7 @@
 import type { SemesterData } from "@/lib/schedule"
 import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 import { getNowSemester } from "@/lib/schedule"
 
 function Title({
@@ -36,7 +36,7 @@ function Progress({
 }: Readonly<{
   semester: SemesterData
 }>) {
-  const passedDays = dayjs().diff(semester.startDate, "day", true)
+  const passedDays = od().diff(semester.startDate, "d", true)
   const totalDays = semester.weeks * 7
   const label = `[${Math.ceil(passedDays / 7)}/${semester.weeks}]`
 

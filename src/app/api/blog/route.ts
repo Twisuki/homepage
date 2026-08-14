@@ -1,5 +1,5 @@
 import { load } from "cheerio"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 
 export interface BlogData {
   title: string
@@ -31,7 +31,7 @@ export async function GET() {
       const blog: BlogData = {
         title,
         url: BLOG_BASE + url,
-        date: dayjs(date).format("YYYY-MM-DD"),
+        date: od(date).p("YYYY-MM-DD"),
         excerpt,
         tags: Array.from(new Set([...categorys, ...tags])),
       }

@@ -1,4 +1,4 @@
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 
 interface HolidayItem {
   holiday: true
@@ -25,17 +25,17 @@ const HOLIDAY_API_URL = "https://holiday.ailcc.com/api/holiday/year"
 
 export async function GET() {
   try {
-    const year = dayjs().format("YYYY")
+    const year = od().p("YYYY")
 
     const response = await fetch(`${HOLIDAY_API_URL}/${year}`)
     const data: Response = await response.json()
 
     const holidayList = Object.entries(data.holiday).map(([_k, v]) => v)
-    const sortedHolidayList = holidayList.toSorted((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix())
+    const sortedHolidayList = holidayList.toSorted((a, b) => od(a.date).ts - od(b.date).ts)
     const holidays: HolidayData[] = sortedHolidayList.map(h => ({
       name: h.name.replace("（休）", ""),
-      date: dayjs(h.date).format("YYYY-MM-DD"),
-      daysLeft: dayjs(h.date).diff(dayjs(), "day"),
+      date: od(h.date).p("YYYY-MM-DD"),
+      daysLeft: od(h.date).diff(od(), "d"),
     }))
 
     return Response.json(holidays)

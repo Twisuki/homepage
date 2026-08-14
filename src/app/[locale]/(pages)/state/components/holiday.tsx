@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { cn } from "@/lib/cn"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 
 function Message({
   holidays,
@@ -48,8 +48,8 @@ function Progress({
 
   const [isActive, setIsActive] = useState(new Map(mergedHolidays.map(h => [h.name, false])))
 
-  const yearStart = dayjs().startOf("year")
-  const totalLength = dayjs().endOf("year").diff(yearStart, "day")
+  const yearStart = od().cs("y")
+  const totalLength = od().ce("y").diff(yearStart, "d")
 
   const handleClick = (name: string) => {
     setIsActive(prev => new Map(prev).set(name, !prev.get(name)))
@@ -67,7 +67,7 @@ function Progress({
               { "text-white/90": isActive.get(h.name) },
             )}
             style={{
-              left: `${(dayjs(h.date).diff(yearStart, "day") / totalLength) * 100}%`,
+              left: `${(od(h.date).diff(yearStart, "d") / totalLength) * 100}%`,
             }}
           >
             <div className={cn(
@@ -88,7 +88,7 @@ function Progress({
         <div
           className="h-full bg-green-500"
           style={{
-            width: `${(dayjs().diff(yearStart, "day") / totalLength) * 100}%`,
+            width: `${(od().diff(yearStart, "d") / totalLength) * 100}%`,
           }}
         />
       </div>

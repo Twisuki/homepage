@@ -1,26 +1,26 @@
-import type { Dayjs } from "@/lib/dayjs"
+import type { OhDay } from "@/lib/ohday"
 import { classList } from "@/data/schedule"
 import { semesterList } from "@/data/semester"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 
 export interface SemesterData {
   year: number
   type: "autumn" | "winter" | "spring" | "summer1" | "holiday" | "summer2"
   weeks: number
-  startDate: Dayjs
-  endDate: Dayjs
+  startDate: OhDay
+  endDate: OhDay
 }
 
 export function getNowSemester() {
   const semesters: SemesterData[] = semesterList.map(s => ({
-    year: dayjs(s.startDate).year(),
+    year: od(s.startDate).year,
     type: s.type,
     weeks: s.weeks,
-    startDate: dayjs(s.startDate),
-    endDate: dayjs(s.startDate).add(s.weeks * 7, "day"),
+    startDate: od(s.startDate),
+    endDate: od(s.startDate).add("w", s.weeks),
   }))
 
-  return semesters.find(s => dayjs().isBetween(s.startDate, s.endDate, "day", "[]"))
+  return semesters.find(s => od().bt(s.startDate, s.endDate.add("d", 1), "d"))
 }
 
 export function getClasses() {
@@ -30,10 +30,10 @@ export function getClasses() {
     throw new Error("No semester found for this page")
   }
 
-  const now = dayjs()
+  const now = od()
 
-  const week = Math.floor(now.diff(semester.startDate, "day") / 7) + 1
-  const day = now.day()
+  const week = now.diff(semester.startDate, "w") + 1
+  const day = now.day
 
   return classList.filter(item => item.week.includes(week) && item.day === day).toSorted((a, b) => a.schedule[0] - b.schedule[0])
 }

@@ -1,25 +1,25 @@
-import type { Dayjs } from "@/lib/dayjs"
+import type { OhDay } from "@/lib/ohday"
 import { useTranslations } from "next-intl"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import { dateList } from "@/data/date"
 import { cn } from "@/lib/cn"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 import { getClasses } from "@/lib/schedule"
 
 function Calendar() {
-  const days: Dayjs[] = []
+  const days: OhDay[] = []
 
-  for (let i = dayjs().startOf("month").day(); i > 0; i--) {
-    days.push(dayjs().startOf("month").subtract(i, "day"))
+  for (let i = od().cs("M").day; i > 0; i--) {
+    days.push(od().cs("M").sub("d", i))
   }
 
-  for (let i = 0; i < dayjs().daysInMonth(); i++) {
-    days.push(dayjs().startOf("month").add(i, "day"))
+  for (let i = 0; i < od().len("M", "d"); i++) {
+    days.push(od().cs("M").add("d", i))
   }
 
   const remaining = 42 - days.length
   for (let i = 0; i < remaining; i++) {
-    days.push(dayjs().endOf("month").add(i + 1, "day"))
+    days.push(od().ce("M").add("d", i + 1))
   }
 
   const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"]
@@ -36,14 +36,14 @@ function Calendar() {
       ))}
       {days.map(day => (
         <div
-          key={day.format("YYYY-MM-DD")}
+          key={day.p("YYYY-MM-DD")}
           className={cn(
             "flex items-center justify-center hover:bg-white/20 rounded-lg",
-            { "bg-blue-500 text-white rounded-lg hover:bg-blue-600": day.isSame(dayjs(), "day") },
-            { "text-white/30": !day.isSame(dayjs(), "month") },
+            { "bg-blue-500 text-white rounded-lg hover:bg-blue-600": day.eq(od(), "d") },
+            { "text-white/30": !day.eq(od(), "M") },
           )}
         >
-          {day.date()}
+          {day.date}
         </div>
       ))}
     </div>
@@ -53,7 +53,7 @@ function Calendar() {
 function Message() {
   const t = useTranslations("StatePage.date")
 
-  const message = dateList.find(d => d.date === dayjs().format("MM-DD"))?.message
+  const message = dateList.find(d => d.date === od().p("MM-DD"))?.message
 
   if (message) {
     return (

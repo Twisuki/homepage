@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react"
 import Base from "@/app/[locale]/(pages)/state/components/base"
 import LiquidGlass from "@/app/components/liquid-glass"
 import { scheduleList } from "@/data/schedule"
-import dayjs from "@/lib/dayjs"
+import od from "@/lib/ohday"
 import { getClasses } from "@/lib/schedule"
 
 function Clock({
@@ -88,7 +88,7 @@ function Clock({
 }
 
 function getMessage(t: ReturnType<typeof useTranslations>) {
-  const now = dayjs()
+  const now = od()
   const classes = getClasses()
 
   if (classes.length === 0)
@@ -98,8 +98,8 @@ function getMessage(t: ReturnType<typeof useTranslations>) {
     const startTime = scheduleList[schedules[0]].start
     const endTime = scheduleList[schedules[schedules.length - 1]].end
 
-    const start = dayjs(startTime, "HH:mm")
-    const end = dayjs(endTime, "HH:mm")
+    const start = od(startTime, "HH:mm")
+    const end = od(endTime, "HH:mm")
 
     return { start, end }
   }
@@ -107,14 +107,14 @@ function getMessage(t: ReturnType<typeof useTranslations>) {
   const { start } = getTime(classes[0].schedule)
   const { end } = getTime(classes[classes.length - 1].schedule)
 
-  if (now.isBefore(start))
+  if (now.lt(start))
     return t("before")
-  if (now.isAfter(end))
+  if (now.gt(end))
     return t("end")
 
   const current = classes.find((item) => {
     const { start, end } = getTime(item.schedule)
-    return now.isBetween(start, end, "minute", "[]")
+    return now.bt(start, end.add("m", 1), "m")
   })
 
   if (current) {
@@ -126,18 +126,18 @@ function getMessage(t: ReturnType<typeof useTranslations>) {
 export default function Time() {
   const t = useTranslations("StatePage.time")
 
-  const [hour, setHour] = useState(dayjs().hour())
-  const [minute, setMinute] = useState(dayjs().minute())
-  const [second, setSecond] = useState(dayjs().second())
+  const [hour, setHour] = useState(od().hour)
+  const [minute, setMinute] = useState(od().minute)
+  const [second, setSecond] = useState(od().second)
 
   const message = useMemo(() => getMessage(t), [hour, minute])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = dayjs()
-      setHour(now.hour())
-      setMinute(now.minute())
-      setSecond(now.second())
+      const now = od()
+      setHour(now.hour)
+      setMinute(now.minute)
+      setSecond(now.second)
     }, 500)
 
     return () => clearInterval(interval)
