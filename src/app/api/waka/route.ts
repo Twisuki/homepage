@@ -6,8 +6,24 @@ export interface WakaData {
 }
 
 const BLOG_BASE = "https://blog.twis.uk"
-const WAKA_START = "<!--START_SECTION:waka-->"
-const WAKA_END = "<!--END_SECTION:waka-->"
+const WAKA_START = "<!--WAKA_BLOG_SYNC_START-->"
+const WAKA_END = "<!--WAKA_BLOG_SYNC_END-->"
+
+// 严格依据 Twisuki/profile.md CUSTOM_WAKA_START 内 formatTime / formatLines：
+//   - 时间: en-US 千分位整数 + 0/1 特殊单位(hr/min, 其它一律 hrs/mins), URL 编码
+//   - 行数: en-US 千分位 + 强制两位小数 + k, URL 编码
+//   - This Week badge 颜色: time=blue / lines=aqua
+//   - From Hello World badge 颜色: time=green / lines=lime  ← 我们要这套
+// URL 解码后是字面字符, 这里只用字面空格; src 在循环里会先 decodeURIComponent 归一化
+const ALL_TIME_REGEX
+  = /Code Time-(\d{1,3}(?:,\d{3})*) hrs? (\d+) mins?-green/
+
+const ALL_LINES_REGEX
+  = /Lines of Code-(\d{1,3}(?:,\d{3})*\.\d{2})k-lime/
+
+function escapeRegex(s: string) {
+  return s.replace(/[\\^$.*+?()[\]{}|]/g, "\\$&")
+}
 
 export async function GET() {
   try {
@@ -15,47 +31,50 @@ export async function GET() {
     const res = await fetch(url)
     const html = await res.text()
 
-    const escapeRegex = (str: string) => str.replace(/[\\^$.*+?()[\]{}|]/g, "\\$&")
-    const regex = new RegExp(
-      `${escapeRegex(WAKA_START)}([\\s\\S]*?)${escapeRegex(WAKA_END)}`,
-    )
+    const section = html.match(
+      new RegExp(`${escapeRegex(WAKA_START)}([\\s\\S]*?)${escapeRegex(WAKA_END)}`),
+    )?.[1]
 
-    const match = html.match(regex)
-    if (!match || !match[1])
-      throw new Error("Waka 匹配失败!")
+    if (!section)
+      throw new Error("Waka section not found")
 
-    const $ = load(match[1])
+    const $ = load(section)
 
     let time = ""
     let lines = ""
 
-    $("figure").each((_, figure) => {
-      const src = $(figure).find("img").attr("src")
-      if (!src)
-        return
-
-      // 解析时间
-      const timeRegex = /Code Time-(\d+(?:%2C\d+)?)\s*hrs\s*(\d+)\s*mins-blue/
-      const timeMatch = src.match(timeRegex)
-      if (timeMatch && timeMatch[1] && timeMatch[2]) {
-        const hours = timeMatch[1].replace(/%2C/g, "")
-        time = `${hours}h ${timeMatch[2]}min`
+    $("img").each((_, img) => {
+      const raw = $(img).attr("src") ?? ""
+      // vuepress 对 src 中的 %20 已部分解码为字面空格, 但 %2C(逗号)还是编码形态
+      // 这里统一 decode 一遍, 让正则只吃字面字符
+      let src = raw
+      try {
+        src = decodeURIComponent(raw)
+      }
+      catch {
+        // 极少数非法 %xx 时保留原串走兜底匹配
       }
 
-      // 解析代码行数
-      const linesRegex = /Written-([\d.]+) thousand lines of code-blue/
-      const linesMatch = src.match(linesRegex)
-      if (linesMatch && linesMatch[1]) {
-        lines = `${linesMatch[1]}k`
+      const t = src.match(ALL_TIME_REGEX)
+      if (t && t[1] && t[2]) {
+        // 去千分位逗号
+        const hours = (t[1] as string).replace(/,/g, "")
+        time = `${hours}h ${t[2]}min`
       }
+
+      const l = src.match(ALL_LINES_REGEX)
+      if (l && l[1]) {
+        lines = `${l[1]}k`
+      }
+
+      if (time && lines)
+        return false
     })
 
-    const response: WakaData = {
-      time,
-      lines,
-    }
+    if (!time && !lines)
+      throw new Error("Waka 匹配失败!")
 
-    return Response.json(response)
+    return Response.json({ time, lines })
   }
   catch (error) {
     console.error("Failed to fetch waka data:", error)
