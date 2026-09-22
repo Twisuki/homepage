@@ -49,7 +49,7 @@ export default function IntroCard({
                 <IconBrandGithub className="w-4 h-4" />
               </div>
             </Button>
-            {t("card2.link")}
+            {t("card2.repo")}
           </div>
         </Button>
       </div>
