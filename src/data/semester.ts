@@ -11,4 +11,5 @@ export const semesterList: SemesterItem[] = [
   { startDate: "2026-07-05", type: "summer1", weeks: 2 },
   { startDate: "2026-07-19", type: "holiday", weeks: 6 },
   { startDate: "2026-08-30", type: "summer2", weeks: 2 },
+  { startDate: "2026-09-13", type: "autumn", weeks: 18 },
 ]
