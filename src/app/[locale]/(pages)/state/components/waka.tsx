@@ -29,6 +29,17 @@ function WakaContent() {
     }
   }
 
+  function formatTime(seconds: number) {
+    const h = Math.floor(seconds / 3600)
+    const m = Math.floor((seconds % 3600) / 60)
+    return `${h.toLocaleString("en-US")}h ${m}min`
+  }
+
+  function formatLines(total: number) {
+    const v = (total / 1000).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    return `${v}k`
+  }
+
   useEffect(() => {
     void getWakaData()
   }, [])
@@ -54,10 +65,10 @@ function WakaContent() {
     <>
       <div className="w-full flex items-center justify-between animate-fadeInUp">
         <IconPencilCode />
-        {waka.time}
+        {formatTime(waka.time)}
       </div>
       <div className="w-full flex items-center justify-center gap-2 animate-fadeInDown">
-        {waka.lines}
+        {formatLines(waka.lines)}
         <span>Lines</span>
         <IconCode />
       </div>
