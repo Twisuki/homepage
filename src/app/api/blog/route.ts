@@ -1,5 +1,12 @@
-import { load } from "cheerio"
 import od from "@/lib/ohday"
+
+interface BlogResponse {
+  title: string
+  path: string
+  date: string
+  excerpt: string[]
+  tags: string[]
+}
 
 export interface BlogData {
   title: string
@@ -10,34 +17,18 @@ export interface BlogData {
 }
 
 const BLOG_BASE = "https://blog.twis.uk"
+const BLOG_API = "https://blog.twis.uk/blogs.json"
 
 export async function GET() {
   try {
-    const res = await fetch(BLOG_BASE)
-    const html = await res.text()
+    const res = await fetch(BLOG_API)
+    const data: BlogResponse[] = await res.json()
 
-    const $ = load(html)
-
-    const blogs: BlogData[] = []
-
-    $("article.vp-article-item").each((_, article) => {
-      const title = $(article).find("header").find("span").text()
-      const url = $(article).find("a.route-link").attr("href") || ""
-      const date = $(article).find("span.page-date-info").find("meta").attr("content") || ""
-      const categorys = $(article).find("span.page-category-info").find("span.page-category-item").map((_, span) => $(span).text()).get()
-      const tags = $(article).find("span.page-tag-info").find("span.page-tag-item").map((_, span) => $(span).text()).get()
-      const excerpt = $(article).find("div.vp-article-excerpt").find("p").map((_, p) => $(p).text()).get()
-
-      const blog: BlogData = {
-        title,
-        url: BLOG_BASE + url,
-        date: od(date).p("YYYY-MM-DD"),
-        excerpt,
-        tags: Array.from(new Set([...categorys, ...tags])),
-      }
-
-      blogs.push(blog)
-    })
+    const blogs = data.map((blog: BlogResponse) => ({
+      ...blog,
+      date: od(blog.date).p("YYYY-MM-DD"),
+      url: `${BLOG_BASE}${blog.path}`,
+    } as BlogData))
 
     return Response.json(blogs)
   }
