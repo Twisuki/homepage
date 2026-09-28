@@ -1,5 +1,5 @@
-import type { OhDay } from "@twisuki/ohday"
-import { od } from "@twisuki/ohday"
+import type { OhDay } from "@xtwis/ohday"
+import { od } from "@xtwis/ohday"
 
 export default od
 export type { OhDay }
