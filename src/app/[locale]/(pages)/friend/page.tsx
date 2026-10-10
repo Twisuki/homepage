@@ -1,7 +1,7 @@
 "use client"
 
 import type { FriendData } from "@/app/api/friend/route"
-import { IconArrowRight, IconCircleX, IconLoader2 } from "@tabler/icons-react"
+import { IconAlertCircle, IconArrowRight, IconLoader2 } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -197,7 +197,7 @@ export default function friend() {
                             )}
                             {avatarStatus[i] === "error" && (
                               <div className="absolute inset-0 z-20 flex items-center justify-center">
-                                <IconCircleX className="w-8 h-8" />
+                                <IconAlertCircle className="w-8 h-8" />
                               </div>
                             )}
                           </div>

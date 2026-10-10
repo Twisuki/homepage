@@ -1,4 +1,9 @@
-import { load } from "cheerio"
+interface FriendResponse {
+  name: string
+  icon: string
+  desc: string
+  link: string
+}
 
 export interface FriendData {
   title: string
@@ -7,33 +12,19 @@ export interface FriendData {
   description: string
 }
 
-const BLOG_BASE = "https://blog.twis.uk"
+const FRIEND_API = "https://blog.twis.uk/friends.json"
 
 export async function GET() {
   try {
-    const url = `${BLOG_BASE}/friend`
-    const res = await fetch(url)
-    const html = await res.text()
+    const res = await fetch(FRIEND_API)
+    const data: FriendResponse[] = await res.json()
 
-    const $ = load(html)
-
-    const friends: FriendData[] = []
-
-    $("a.vp-project-card").each((_, card) => {
-      const title = $(card).find(".vp-project-name").text()
-      const url = $(card).attr("href") || ""
-      const avatar = $(card).find("img").attr("src") || ""
-      const description = $(card).find(".vp-project-desc").text()
-
-      const friend: FriendData = {
-        title,
-        url,
-        avatar: avatar.startsWith("/") ? BLOG_BASE + avatar : avatar,
-        description,
-      }
-
-      friends.push(friend)
-    })
+    const friends = data.map((friend: FriendResponse) => ({
+      title: friend.name,
+      url: friend.link,
+      avatar: friend.icon,
+      description: friend.desc,
+    } as FriendData))
 
     return Response.json(friends)
   }
